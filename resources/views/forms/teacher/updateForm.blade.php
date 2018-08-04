@@ -111,7 +111,7 @@
                         </div>   
                 
                         <div id="profile-container">
-                            <img id="profileImageEg" src="{{asset('/storage/profileImage/'.$userData->imageLink)}}" class="img-circle" style="width:100px; height:100px;">
+                            <img id="profileImageEg" src="{{asset('/showUserImage/'.$userData->imageLink)}}" class="img-circle" style="width:100px; height:100px;">
                             <p id="below_profile">Upload profile picture</p>
 
                             <p id="below_profile_status"><?php echo $actualStatus; ?></p>

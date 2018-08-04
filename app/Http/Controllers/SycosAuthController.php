@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\validation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\singup;
 use App\account_verification;
 use App\AccountDataModel\teacherData;
@@ -103,8 +105,6 @@ class SycosAuthController extends Controller
         }
 
     }
-
-
 
     public function showLoginForm(){
         return view('Auth_sycos.login');
@@ -348,5 +348,10 @@ class SycosAuthController extends Controller
         ]);
 
         return redirect()->back()->with('success','Thnaks For Feedback');
+    }
+
+    public function getUserFiles($fileName){
+        $file = Storage::get('/public/profileImage/'.$fileName);
+        return new Response($file,200);
     }
 }

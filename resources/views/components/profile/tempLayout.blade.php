@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="myNavbar1">       
                 <div class="left-side">
                     <div class="text-center">
-                        <img  class="img-circle" id="profileImage" src="{{asset('/storage/profileImage/'.$userData['detail']->imageLink)}}" alt="ProfileImage">
+                        <img  class="img-circle" id="profileImage" src="{{asset('/showUserImage/'.$userData['detail']->imageLink)}}" alt="ProfileImage">
                     </div>
                     
                     <div id="profileEssentials" >
@@ -53,7 +53,7 @@
 
                             @endif
 
-                            @if($userData['verified'] !== '0')
+                            @if($userData['verified'] != '0')
                                 <span class="glyphicon glyphicon-ok-circle"></span>
                             @endif
                             
@@ -63,7 +63,7 @@
                         <br>
                         
                         <div id="status">
-                            @if($userData['detail']->status === 1)
+                            @if($userData['detail']->status == '1')
                                 Available
                             @else
                                 Not Available
@@ -135,11 +135,11 @@
             <div class="buttons" >
                 @guest
                 @else 
-                    @if(Auth::user()->name!==$userData['detail']->profilePage)
+                    @if(Auth::user()->name!=$userData['detail']->profilePage)
                         
-                        @if(CompanionFunction::CheckRequestSent($userData['detail']->profilePage)==='1')
+                        @if(CompanionFunction::CheckRequestSent($userData['detail']->profilePage)=='1')
                             <button type="button" id="addCompanion" class="btn btn-primary" >Waiting for response</button>
-                        @elseif(CompanionFunction::CheckCompanion($userData['detail']->profilePage)==='0')
+                        @elseif(CompanionFunction::CheckCompanion($userData['detail']->profilePage)=='0')
                             <button type="button" id="addCompanion" class="btn btn-primary"
                                 onclick="event.preventDefault();document.getElementById('companionAdd').submit();">
                                 Add As Companion
@@ -178,7 +178,7 @@
     </div>        
     </div>
 </div>
-    @if($userData['verified'] === '0')
+    @if($userData['verified'] == '0')
         @include('includes.verifyEmailForm')
     @endif
     @include('components.profile.footerProfile') 

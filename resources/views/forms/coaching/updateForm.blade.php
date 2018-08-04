@@ -82,7 +82,7 @@
               <h3 id='formtitle'>Create Your Identity</h3>
           </div> 
   <div id="profile-container" id="img">
-      <image id="profileImageEg" src="{{asset('/storage/profileImage/'.$userData->imageLink)}}"  class="img" style="width:75%; heigth:auto;"/>
+      <image id="profileImageEg" src="{{asset('/showUserImage/'.$userData->imageLink)}}"  class="img" style="width:75%; heigth:auto;"/>
      <p id="below_profile">Upload a image of your Institute banner or Board</p>
   </div>
   <input id="imageUpload" type="file" name="profile_img" placeholder="Photo" capture>

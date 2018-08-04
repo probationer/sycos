@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\validation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\AccountDataModel\studentData;
 use Illuminate\Support\Facades\SycosFunctions;
 

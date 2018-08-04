@@ -21,7 +21,7 @@ class SearchMethod extends Facade
                         
                         <div class="row">
                             <div class="col-xs-12">
-                                <img src="'.asset('/storage/profileImage/'.$data->imageLink).'" class="img-circle " width="100px" height="100px"/> 
+                                <img src="'.asset('/showUserImage/'.$data->imageLink).'" class="img-circle " width="100px" height="100px"/> 
                             </div>
                         </div>
                         <br>
@@ -85,7 +85,7 @@ class SearchMethod extends Facade
                         
                         <div class="row">
                             <div class="col-xs-12">
-                                <img src="'.asset('/storage/profileImage/'.$data->imageLink).'" class="img-circle " width="100px" height="100px"/> 
+                                <img src="'.asset('/showUserImage/'.$data->imageLink).'" class="img-circle " width="100px" height="100px"/> 
                             </div>
                         </div>
                         <br>
@@ -149,7 +149,7 @@ class SearchMethod extends Facade
                         
                         <div class="row">
                             <div class="col-xs-12">
-                                <img src="'.asset('/storage/profileImage/'.$data->imageLink).'" class="img-circle " width="100px" height="100px"/> 
+                                <img src="'.asset('/showUserImage/'.$data->imageLink).'" class="img-circle " width="100px" height="100px"/> 
                             </div>
                         </div>
                         <br>

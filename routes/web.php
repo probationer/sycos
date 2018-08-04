@@ -79,5 +79,10 @@ Route::post('/profile/{PageLink}/setting', 'SycosAuthController@privacySettings'
 Route::post('/sendmail', 'SycosAuthController@sendMailDemo');
 Route::get('/sendmail', 'SycosAuthController@showForm');
 
+Route::get('/showUserImage/{fileName}',[
+    'as'=>'info',
+    'uses'=>'SycosAuthController@getUserFiles'
+    ]);
+
 //to change the user_id
 //Route::get('/matchId','SycosAuthController@matchId');

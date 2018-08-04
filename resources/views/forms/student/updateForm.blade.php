@@ -71,7 +71,7 @@
                 </div> 
 
         <div id="profile-container">
-           <image id="profileImageEg" src="{{asset('/storage/profileImage/'.$userData->imageLink)}}" class="img-circle" />
+           <image id="profileImageEg" src="{{asset('/showUserImage/'.$userData->imageLink)}}" class="img-circle" />
            <p id="below_profile">Upload Your Image</p>
            
         </div>
