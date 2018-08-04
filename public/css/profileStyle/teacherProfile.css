@@ -1,0 +1,413 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+    color: black;
+    text-decoration:none;
+}
+.left-side {
+    width: 100%;
+    height: 848px;
+    background-color:#3c4377;
+    float: left;
+    margin-top: -40px;
+    margin-left: -31px;
+    color: white;
+}
+
+.navbar-default {
+    background-color: #3c4377;
+    border-color: #3c4377;
+    border-radius: 0px;
+}
+
+.navbar-default .navbar-nav>li>a  {
+    color:white;
+}
+
+
+
+/*sandeep */
+#anchorDesign{
+    color:white;
+    font-style:roboto;
+    font-size: 14px;
+    margin: auto 5px auto 10px;
+    font-weight:lighter;
+}
+
+#anchorDesign:hover{
+    color: #d4cece;
+    font-style:roboto;
+    
+}
+
+#profileEssentials{
+    text-align: center;
+}
+
+#profile_name{
+    font:300 18px oxygen;
+    margin-top:10px;
+}
+
+
+
+#type{
+    margin-top:5px;
+    font:300 14px roboto;
+}
+
+#status{
+    font:300 12px roboto;
+    margin-top:-15px;
+}
+#state{
+    font:300 12px roboto;
+    margin-top:-15px;
+    padding:2px;
+}
+#notification{
+    margin-left: 60px;
+    margin-top: 50px;
+    font:300 16px roboto;
+}
+
+#articleLeft,#video,#Stats,#setting,#notifications{
+    margin-left: 60px;
+    margin-top:30px;
+    font:300 16px roboto;
+}
+
+#articleLeft a,#video a, #setting a,#notifications a{
+    color:white;
+}
+
+#articleLeft a:hover,#video a:hover, #setting a:hover,#notifications a:hover{
+    color:whitesmoke;
+}
+#icons{
+    color: black;
+    font-weight: 100;
+    font-size:14px;
+    margin-right: 5px;
+}
+
+
+/*sandeep edit ends */
+
+/* this is details of profile section*/
+#formated
+{
+    margin-right:10px;
+    background-color: gainsboro;
+    padding:6px;
+    border-radius: 4px;
+}
+
+.formated2
+{
+    margin-top:40px;
+}
+
+#profileImage{
+    margin-left:0px;
+    margin-top:70px;
+    width:130px;
+    height:130px;
+    
+}
+
+#detailName{
+    margin-top:50px;
+}
+
+#Contentheading{
+    font:500 15px roboto;
+    color:black;
+}
+
+#userContent{
+    font:400 14px roboto;
+    color:#212020;
+}
+
+#SubjectsTag{
+    border-radius:5px; 
+    padding:8px;
+    background-color:#ccc4c4;
+    color:black; margin:20px;
+}
+
+/* end of  details profile section*/
+
+/* article  section*/
+
+
+
+
+
+
+/* end of  article  section*/
+
+/* comments  section*/
+/*
+#ratings>a{
+    color:gray;
+}
+#ratings>a:hover{
+    color:#3c4377;
+}
+#ratings>a:active{
+    color:#3c4377;
+}
+*/
+
+
+.rateBook{
+    color:black;
+    font-size:16px;
+}
+
+
+
+
+/* end of  comments  section*/
+
+#companionAdd{
+    display: none;
+}
+
+
+
+.navbar-default .navbar-brand {
+    color:white;
+    font-size: 20px;
+}
+
+.tabcontent
+{   
+    
+    display: none;
+    width:100%;
+    height:auto;
+    background-color:#f0eded;
+    margin-left:-30px;
+    margin-top:10px;
+    overflow: hidden;
+}
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    margin-left: -30px;
+    background-color: #f0eded;;
+}
+
+
+/* Style the buttons inside the tab */
+.tab a {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 18px;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: oxygen;
+}
+
+/* Change background color of buttons on hover */
+.tab a:hover {
+    text-decoration: underline;
+}
+
+/* Create an active/current tablink class */
+.tab a.active {
+    text-decoration: underline;
+}
+
+.right-side
+{
+    float: right;
+    width: 100%;
+    margin-top:50px;
+    
+}
+.buttons
+{ margin-left:50px;
+    
+}
+#boldDetials{
+    margin-left:40px;
+}
+
+
+#settelTags{
+    margin-left:1px;
+}
+.recomendations
+{
+    width:100%;
+    height: 400px;
+    background-color: #f0eded;
+    margin-top:10px;
+    margin-left:0px;
+    overflow-y: auto;
+}
+
+.img-circle {
+    border-radius: 50%;
+    border:2px white solid;
+}
+
+
+a {
+    color: black;
+    text-decoration: none;
+    
+}
+
+hr
+{
+    font-weight:bold;background-color:red;
+}
+
+
+
+/* mobile view*/
+
+@media screen and (max-width: 1000px) {
+
+    
+    #boldDetials{
+        margin-left: 3%;
+    }
+
+    #settelTags{
+        margin-left: 3%;
+    }
+
+    .tab {
+        overflow: hidden;
+        margin-left: 1%;
+        background-color: #f0eded;
+    }
+
+    .dropdown-menu.a{
+        color:white;
+    }
+
+    #anchorDesign{
+        color:white;
+        font-style:roboto;
+        font-size: 14px;
+        text-align:center;
+        font-weight:lighter;
+    }
+
+    .left-side{
+        width:100%;
+        height: 515px;
+        background-color:#3c5375;
+        float: left;
+        color: white;
+        padding-bottom: 30px;
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Stay on top */
+        left: 0;
+    }
+
+
+    .navbar-default {
+        background-color: #3c5375;
+        border-color: #3c5375;
+    }
+
+    .navbar-default .navbar-nav>li>a {
+        color:white;
+    }
+
+    .navbar-default .navbar-brand {
+        color:white;
+        font-size: 20px;
+    }
+
+    .tabcontent
+    {
+        width:100%;
+        height:540px;
+        background-color:#f0eded;
+        margin-top:50px;
+        margin-left:1%;
+        overflow-y : auto;
+    }
+
+    .navbar-inverse {                  
+        background-color: #f0eded;
+        border-color: #f0eded;
+        margin-top:-60px;
+    }
+    .navbar-inverse .navbar-nav>li>a {
+        color: #333;
+    }
+    .right-side
+    {
+       
+        width: 100%;
+        margin-top:30px;
+        
+    }
+    .buttons
+    { 
+        margin-left:0px;
+        
+    }
+
+    .recomendations
+    {
+        width:100%;
+        height: 400px;
+        background-color: #f0eded;
+        margin-top:10px;
+        margin-left:0px;
+        overflow-y:auto;
+    }
+
+    .img-circle {
+        border-radius: 2%;
+        border:2px white solid;
+    }
+
+    #contactBtn
+    {
+        margin-left: 1%;
+    
+        
+    }
+    #addCompanion
+    {
+        margin-top:0px;
+        margin-left:30px;
+    }
+    #image1
+    {
+        margin-top:-2px !important;
+        margin-left:55px !important;
+    }
+    #formated
+    {
+    margin-right:10px;
+    background-color:#f0eded !important;
+    padding:6px;border-radius: 4px;
+    }
+    #formated2
+    {
+        margin-top:-30px;
+        margin-left:195px !important;
+    }
+}

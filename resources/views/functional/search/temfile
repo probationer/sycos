@@ -1,0 +1,370 @@
+<?php 
+    
+    
+    //$token = Session::Session_create('NlTkSe');
+        
+            $male = $female =NULL;
+            $st = $techer = $inst = NULL;
+            $all = NULL;
+            $stateFilter = NULL;
+            $totalSearchResults = null;
+            
+            if(isset($_GET['gender'])){
+                switch($_GET['gender']){
+                    case 'male':
+                        $male = 'SELECTED';
+                        break;
+                    case 'female':
+                        $female ='SELECTED';
+                        break;
+                    default :
+                        $male = $female =NULL;
+                        $all = 'SELECTED';
+                        break;
+                }
+            }else{
+                $male = $female = NULL;
+                $all = 'checked';
+            }
+            
+            if(isset($_GET['type'])){
+                switch($_GET['type']){
+                    case 'Students':
+                        $st = 'SELECTED';
+                        break;
+                    case 'Teachers':
+                        $techer ='SELECTED';
+                        break;
+                    case 'Institutes':
+                        $inst ='SELECTED';
+                        break;
+                    default :
+                        $st = $techer = $inst = NULL;
+                        $all = 'SELECTED';
+                        break;
+                }
+            }else{
+                
+                $st = $techer = $inst = NULL;
+                $all = 'checked';
+            } 
+            
+            
+            if(isset($_GET['state'])){
+                $stateFilter = $_GET['state'];
+            }else{
+                $stateFilter = NULL;
+            }
+        
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Search Study Companion</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../stylesheets/searchResultPage.css">
+        <link rel="stylesheet" href="../stylesheets/loginForm.css">
+        <link rel="stylesheet" href="../stylesheets/joinUsForm.css">
+     
+        <script src="ijs/javaXfile.js"></script>
+        <script src="ijs/loginLogoutButton.js"></script>
+        
+        <script>
+                function sliderChange(){
+                    document.getElementById('ageValue').innerHTML = document.getElementById('ageSlider').value;
+                    search();
+                }
+             
+             function search(){
+                 document.getElementById("searchBtn").click();
+             }
+                
+             function search2(){
+                 document.getElementById("searchBtn").click();
+             }   
+            </script>
+<style>
+
+</style>
+     </head>
+     
+ <body>
+  <nav class="navbar navbar-default">
+        <!-- input search --> 
+  <div class="container"style="margin-top:20px;">
+  <div class="row searchFilter" >
+        <div class="col-sm-2" style="margin-top:-35px;">
+            <div class="">
+                <a href="http://www.sycos.in"><h1 class="Sycos">Sycos.In</h1></a>
+        </div>
+   </div>		
+  <div class="searchf"style="">
+     <div class="col-sm-9" >
+         <form id='searchForm' method="Get" action="" >       
+        <div class="input-group" >
+             
+                    <input id="search" type="search" name="second"  class="form-control" aria-label="Text input with segmented button dropdown" value="<?php if(isset($_GET['second'])) echo $_GET['second'];?>"/>
+                    <div class="input-group-btn" >
+<!--                        <button type="button" id="button_submit"class="btn btn-secondary dropdown-toggle dropdown-toggle-split" name="searchbutton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                            <span class="label-icon" >Category</span> 
+                            <span class="caret" >&nbsp;</span>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-right" >
+                            <ul class="category_filters" >
+                                <li >
+                                 <input class="cat_type category-input" data-label="All" id="all" value="" name="radios" type="radio" ><label for="all" >All</label>
+                                </li>
+                                <li>
+                                 <input type="radio" name="radios" id="Coaching_center" value="Coaching_Institute" ><label class="category-label" for="Coaching center" >Coaching Institute</label>
+                                </li>
+                                <li>
+                                 <input type="radio" name="radios" id="Student" value="Students" ><label class="category-label" for="Student" >Students</label>
+                                </li>
+                                <li>
+                                 <input type="radio" name="radios" id="Teacher" value="Teachers" ><label class="category-label" for="Teacher" >Teachers</label>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <button id="searchBtn" type="submit" class="btn btn-secondary btn-search" name="search" >
+                            <span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span>
+                        </button>
+                    </div>
+            
+        </div>
+          
+    </div>
+  </div>
+	</div>
+	</div>   
+     </nav>
+ <div class="dropdownl" style="">
+ 
+ <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle"data-toggle="collapse" data-target="#myNavbar" >
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+            </div>
+            
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" >
+                 <div class="dropdownl" style="">
+ <span class="dropdown">
+     
+     <select class="" role="menu" name="gender" aria-labelledby="menu1" style='border:none;' onselect="search2()" >
+         <option role="presentation"  <?php echo $all;?> value="all" >Select Gender</option>
+         <option role="presentation"  <?php echo $male;?> value="male" >Male</option>
+         <option role="presentation"  <?php echo $female;?> value="female" >Female</option>
+    </select>
+  </span>
+                     
+   <span class="dropdown">
+    <select class="" role="menu" name="type"  aria-labelledby="menu1" style='border:none;' onselect="search2()" >
+        <option role="presentation"  <?php echo $all;?> value="all">All</option>
+        <option role="presentation"  <?php echo $inst;?> value="Institutes">Institutes</option>
+        <option role="presentation"  <?php echo $techer;?> value="Teachers">Teachers</option>
+        <option role="presentation"  <?php echo $st;?> value="Students">Students</option>
+      
+    </select>
+  </span>
+  
+     <span class="dropdown" >
+         <select class="" role="menu" name="state"  aria-labelledby="menu1" style='border:none;' onselect="search2()" >
+                <?php 
+                $stateArray = explode(',', SycosFunctions::PutList('state'));
+                    foreach($stateArray as $v){
+                        if($v == $stateFilter){
+                            echo '<option role="presentation"  value="'.$v.'" selected>'.$v.'</option> ';
+                        }else{
+                            echo '<option role="presentation"  value="'.$v.'">'.$v.'</option> ';
+                        }
+                    }
+                ?> 
+                 
+            </select>
+     </span>                   
+                     
+<!--   <span class="dropdown">
+    <a class="" type="" id="menu1" data-toggle="dropdown">Distance
+    <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">less than 2 km</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">less than 10 km</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">less than 20 km</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">less than 60 km</a></li>
+	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">100-500 km</a></li>
+    </ul>
+  </span>-->
+   
+<!--   <span class="dropdown">
+     <a class="" type="" id="menu1" data-toggle="dropdown">Choose subject
+    <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Physics</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Networking</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">C++</a></li>
+	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Java</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">c progrmming</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mathmatics</a></li>
+	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Science</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Economics</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">History</a></li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+    </ul>
+  </span>-->
+    <span class="dropdown">                 
+            <!--<input id="ageSlider"  type="range" min="3" max="80" value="<?php if(isset($_GET['age'])) echo $_GET['age'];?>" onchange="sliderChange()"/>-->
+<!--            <div id="ageValue" ><?php if(isset($_GET['age'])) echo $_GET['age'];?> </div>-->
+        <input type="number" id="ageValue" name="age" value="<?php if(isset($_GET['age'])) echo $_GET['age'];?>" placeholder=" Max Age Limit"/>
+    </span>
+                     
+    </form>
+ <hr>
+ </div>
+    </ul>
+	</div>
+	</div>
+ <div class="container-fluid">
+        <div class="middle-section">
+            
+            
+                <div class="left-middle">
+                </div>
+                <div>
+                    
+                    <!------search results-------------->
+                    <div class="middle-section-inside" >
+                        <?php //echo $totalSearchResults . $totalSearchTime;?>
+                       <!--profile Card----------->
+<!--                       <div class="container-fluid" style="background-color:white; border:1px solid gray; margin:5px;">
+                            <div class="row">
+                                <!--image section---------
+                                <div class="col-sm-4 text-center">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            &nbsp;
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <img src="../compressed/default.png" class="img-circle" width="100px" height="100px"/> 
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row ">
+                                        <div class="col-xs-12" style="margin-bottom:10px;">
+                                            <button class="btn btn-info">View Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!--image section end---------
+                                
+                                <!--Information---------
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p style="font:500 22px roboto;">Sandeep Roy<br>
+                                                <span style="font:400 15px roboto; font-style: italic;">Freelancer Teacher</span><br>
+                                                <span style="font:400 13px roboto; font-style: italic;">Delhi</span>
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p>Mathemtics, Science, English, Computer Science, Mathemtics, Science, English, Computer Science.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p>Geeta Colony,Laxmi Nagar, Preet vihar </p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <!--Information end---------
+                            </div>
+                        </div>-->
+                       <!--profile Card end----------->
+                       
+                       <?php
+                       
+                       
+                       
+                       ?>
+                      
+                    </div>
+                </div>
+        </div>	   
+<?php
+    //include_once '../Components/IndexPage/indexform.php';
+?>
+
+    <script>
+        var modal2 = document.getElementById('idlogin');
+        var modal = document.getElementById('idform');
+        // When the user clicks anywhere outside of the modal, closeLogin it
+        window.onclick = function(event2) {
+            if (event2.target == modal2)
+            {
+            modal2.style.display = "none";
+            }
+            else if (event2.target == modal) 
+            {
+              modal.style.display = "none";
+            }
+        }
+    </script>
+    
+    
+    
+   <!--footer ----------------------------->  
+ 
+    <footer class="container-fluid">
+        <div class="footer row ">
+            <ul style="list-style:none;">
+                <li class=" footer_links">
+                    <div class="col-lg-9 left">                             <!-- change-3 col-sm-9  to col-lg-9  -->
+                        <a id="footerLineLeft" href="http://www.sycos.in/main/about">About Us</a>
+                        <a id="footerLineLeft" href="http://www.sycos.in/main/terms">Terms of service</a>
+                        <a id="footerLineLeft" href="http://www.sycos.in/main/privacy_policy">Privacy Policy</a>   
+                        <a id="footerLineLeft" href="http://www.sycos.in/main/public-suggestions"style="margin-left:10px;">Request a feature</a>
+                        <a id="footerLineLeft" href="http://www.sycos.in/main/public-suggestions">Any Suggestion</a>
+                    </div>                                             
+                    <div class="col-lg-3">
+                        <a id="footerParaRight">Copyright © 2017-2018 <span id="footerSycosIn">Sycos.in</span> All Right Reserved</a>
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+        <hr style="font-weight:bold;background-color:red;">
+    </footer> 
+	
+</div>
+</body>
+</html>

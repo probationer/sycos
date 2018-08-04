@@ -1,0 +1,49 @@
+.footer_row {
+    height: 58px;
+    margin-top: -20px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    background-color: #f0eded;
+    color: black;
+    font-size: 12px;
+}
+
+
+#footerLineLeft
+{
+    padding-left:1px;
+    padding-right: 0px;
+    color:black;
+}
+#footerParaRight
+{
+    margin-left: 39px;
+}
+
+
+@media screen and (max-width: 1000px) {
+
+
+    .footer_row {
+        height: 83px;
+        margin-top: -10px;
+        padding-top: 0px;
+        margin-bottom: 0px;
+        background-color: #f0eded;
+        color: black;
+        font-size: 12px;
+        padding-right: 1px;
+    }
+    
+    
+    #footerLineLeft
+    {
+        padding-left:1px;
+        padding-right: 5px;
+        color:black;
+    }
+        #footerParaRight
+    {
+        margin-left:0px;
+    }
+}

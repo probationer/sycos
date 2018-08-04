@@ -1,0 +1,52 @@
+ function fasterPreview1( uploader ) {
+                                if ( uploader.files && uploader.files[0] ){
+                                    $("#profileImageEg").attr('src', 
+                                        window.URL.createObjectURL(uploader.files[0]) );
+                                }
+                            }
+
+                            $("#imageUpload").change(function(){
+                                fasterPreview(this);
+                                $("#trigger").click();
+
+                                jQuery(function($) {
+                                    $('#imagePreview').Jcrop({
+                                        bgColor:     'black',
+                                        bgOpacity:   .4,
+                                        setSelect:   [ 100, 100, 250, 250 ],
+                                        aspectRatio: 1,
+                                        onChange : updateCoords,
+                                        onSelect : updateCoords
+                                    });
+                                });
+                            });
+
+
+                            $("#cropButton").click(function(){
+                                fasterPreview1(this);
+                            });
+
+                              function updateCoords(c)
+                            {
+                                showPreview(c);
+                                $('#x').val(c.x);
+                                $('#y').val(c.y);
+                                $('#w').val(c.w);
+                                $('#h').val(c.h);
+                            };
+                            
+
+                            
+
+                            function showPreview(c){
+                                var rx = 1000 / c.w;
+                                var ry = 1000 / c.h;
+
+                                $("#profileImageEg").css({
+                                    width: Math.round(rx*20)+'px',
+                                    height: Math.round(ry*20)+'px',
+                                  //  marginLeft: '-'+ Math.round(rx*c.x)+'px',
+                                    //marginTop: '-'+ Math.round(ry*c.y)+'px',
+
+                                });
+                            }

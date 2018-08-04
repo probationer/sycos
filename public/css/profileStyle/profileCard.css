@@ -1,0 +1,62 @@
+
+
+        #ProfileCard{
+            height: auto; margin: 20px; box-shadow: 3px 3px 10px 0px #948b8b; 
+            border:1px solid gray;
+        }
+        #ProfileCard:hover{
+            color:#000033;
+            
+        }
+        #upperSectionOfCard{
+            
+            background-size: cover;
+            opacity: 0.80;
+            filter: alpha(opacity=80); 
+            color:white;
+            /*style="background-image: url({{asset('/storage/profileImage/'.$userData['detail']['imageLink'])}});"
+            */
+        }
+        
+        
+        #ProfileCardName{
+            
+            margin-top: 200px;
+            font:500 24px roboto;
+            
+        }
+        #ProfileCardDesignation{
+            font:400 16px roboto;
+            
+        }
+        #ProfileCardExperience{
+            font:400 14px roboto;
+            
+        }
+        
+        #ProfileCardAchivements{
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        #ProfileCardCount{
+            font-weight: 400;
+        }
+
+        #ProfileCardCharges{
+            margin-top: 10px;
+            font:600 17px roboto;
+        }
+        
+        #ProfileCardCharge{
+            font:400 15px roboto;
+        }
+        
+        #ProfileCardSpecialization{
+            margin-top: 10px;
+            font:600 17px roboto;
+        }
+        
+        #ProfileCardTopics{
+            font:400 15px roboto;
+            margin:auto 15px 20px 15px;
+        }
