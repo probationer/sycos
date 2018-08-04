@@ -43,7 +43,7 @@ class teacherDataController extends Controller
     public function store(Request $data)
     {
 
-        if(strcmp(Auth::user()->usertype,'Teacher')===0){
+        if(strcmp(Auth::user()->usertype,'Teacher')==0){
 	
             $this->validation($data)->validate();
             $userId = Auth::user()->id;
@@ -123,13 +123,13 @@ class teacherDataController extends Controller
     public function update(Request $data, $id)
     {
         
-        if(strcmp(Auth::user()->usertype,'Teacher')===0){
+        if(strcmp(Auth::user()->usertype,'Teacher')==0){
             
             $this->validation($data)->validate();
             $userId = Auth::user()->id;
             $profilpage = Auth::user()->name;
 
-            if($data->input('status') === "on"){
+            if($data->input('status') == "on"){
                 $Tstatus = "1";
                 
             }else{

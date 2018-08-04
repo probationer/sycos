@@ -47,7 +47,7 @@ class studentDataController extends Controller
      */
     public function store(Request $data)
     {
-        if(strcmp(Auth::user()->usertype,'Student')===0){
+        if(strcmp(Auth::user()->usertype,'Student')==0){
 	
             $this->validation($data)->validate();
             $userId = Auth::user()->id;
@@ -128,7 +128,7 @@ class studentDataController extends Controller
      */
     public function update(Request $data, $id)
     {
-        if(strcmp(Auth::user()->usertype,'Student')===0){
+        if(strcmp(Auth::user()->usertype,'Student')==0){
             
             $this->validationUpdate($data)->validate();
             $userId = Auth::user()->id;
@@ -150,7 +150,7 @@ class studentDataController extends Controller
             }
 
 
-            if($data->input('status') === "on"){
+            if($data->input('status') == "on"){
                 $Tstatus = "1";
                 
             }else{

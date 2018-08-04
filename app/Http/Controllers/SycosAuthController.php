@@ -185,7 +185,7 @@ class SycosAuthController extends Controller
             'name' => 'required|string|max:255|min:3|unique:signup',
             'usertype' => ['required','string',
                         function($attribute, $value, $fail) {
-                            if ($value === 'Student' || $value === 'Parent or Guardian' || $value === 'Coaching Institute' || $value === 'Teacher' ) {
+                            if ($value == 'Student' || $value == 'Parent or Guardian' || $value == 'Coaching Institute' || $value == 'Teacher' ) {
                                 
                             }else{
                                 return $fail('Invalid Account Type');
@@ -244,7 +244,7 @@ class SycosAuthController extends Controller
     }
 
     public function PrivacySettingCheck($input){
-        if($input === 'Only Companions'){
+        if($input == 'Only Companions'){
             return true;
         }else{
             return false;
@@ -263,10 +263,10 @@ class SycosAuthController extends Controller
         ]);
         
         //check if not verified then show verification Form
-        if(DB::table('account_verifications')->where('email',Auth::user()->email)->first()->verified !== '0'){
+        if(DB::table('account_verifications')->where('email',Auth::user()->email)->first()->verified != '0'){
             $id = DB::table('account_verifications')->where('email',Auth::user()->email)->first()->email;
 
-            if(DB::table('account_verifications')->where('email',Auth::user()->email)->first()->verification_code === $request->input('verification_code') ){
+            if(DB::table('account_verifications')->where('email',Auth::user()->email)->first()->verification_code == $request->input('verification_code') ){
                 $verify = account_verification::find($id);
                 $verify->verified = '1';
                 $verify->save();
