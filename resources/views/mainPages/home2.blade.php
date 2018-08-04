@@ -104,25 +104,51 @@
 
     </section>
 
+    
+    <section class="header1 cid-qVROMWyHOc mbr-fullscreen mbr-parallax-background" id="header1-j">
+
+        
+
+        <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(0, 0, 0);">
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="mbr-white col-md-10">
+                    <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-1"><span style="font-weight: normal;">Add Your Study Companions</span></h1>
+                    <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">Create Your Own Intellectual &nbsp;network</h3>
+                    
+                    <div class="mbr-section-btn align-center"><a class="btn btn-md btn-primary display-4" href="{{asset('/article')}}">Check Articles/Nots</a>
+                        <a class="btn btn-md btn-primary display-4" href="{{asset('/video')}}">Check Linked Videos</a></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
     @if(count($articleArray['articles']) > 0)
-    <section class="features17 cid-qVV7hO2Rk4" id="features17-m">
+    <section class="features17 cid-qVV7hO2Rk4" id="features17-m" style="background-color:#ad4d4d;">
         
         <div class="container-fluid">
-            <div class="media-container-row" style="height:400px;overflow:hidden;">
-
+                <h1 class="text-center" style="color:white; font-family:'oxygen">Read Articles</h1>
+                <br>
+            <div class="media-container-row" >
                 
                 @for($i = 0; $i<min(6,count($articleArray['articles'])); $i++)
                         
-                <div class="card p-3 col-12 col-md-6 col-lg-2">
-                    <div class="card-wrapper">
+                <div class="card p-3 col-12 col-md-4 col-lg-2" >
+                    <div class="card-wrapper" >
                         
-                        <div class="card-box">
-                            <h3 class="card-title pb-3 mbr-fonts-style display-7">
-                                <a href="{{asset('article/'.$articleArray['articles'][$i]->link)}}">{{$articleArray['articles'][$i]->title}}</a>
-                            </h3>
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                {!!$articleArray['articles'][$i]->body!!}
+                        <div class="card-box" style="height:300px;" >
+                            <h2 class="card-title pb-3 mbr-fonts-style display-7" style="font:bold 16px roboto;">
+                                {{strtoupper($articleArray['articles'][$i]->title)}}
+                            </h2>
+                            <p class="mbr-text mbr-fonts-style display-7" style="font:500 12px arial;">
+                                <?php 
+                                    $body = strip_tags($articleArray['articles'][$i]->body);
+                                    $subStr = substr($body,0,250).'.... <a href="'.asset('article/'.$articleArray['articles'][$i]->link).'" style="color:blueviolet;">Read More</a>';
+                                ?>
+                                {!!$subStr!!}
                             </p>
                         </div>
                     </div>
@@ -216,27 +242,6 @@
                 </div>
             </div>
     </div>
-    </section>
-
-    <section class="header1 cid-qVROMWyHOc mbr-fullscreen mbr-parallax-background" id="header1-j">
-
-        
-
-        <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(0, 0, 0);">
-        </div>
-
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="mbr-white col-md-10">
-                    <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-1"><span style="font-weight: normal;">Add Your Study Companions</span></h1>
-                    <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">Create Your Own Intellectual &nbsp;network</h3>
-                    
-                    <div class="mbr-section-btn align-center"><a class="btn btn-md btn-primary display-4" href="{{asset('/article')}}">Check Articles/Nots</a>
-                        <a class="btn btn-md btn-primary display-4" href="{{asset('/video')}}">Check Linked Videos</a></div>
-                </div>
-            </div>
-        </div>
-
     </section>
 
     <section class="header3 cid-qWtS47vzqf mbr-fullscreen" id="header3-u">

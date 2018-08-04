@@ -16,6 +16,9 @@
         background-color: whitesmoke;
         color:#1b0b6b;
     }
+    #bodyContent{
+        font:500 14px roboto;
+    }
 </style>
 <div class="container">
     <div class="row">
@@ -31,26 +34,25 @@
             $i = 0;
             $j = 0;
         ?>
-        @if(count($data)>0)
+        @if(count($data)>=0)
             @while( ((int)$data['Acount'] - 1)>$i && ((int)$data['Vcount'] - 1)>$j)
                 @if(strtotime($data['article'][$i]->created_at) > strtotime($data['video'][$j]->created_at) )
 
                     <div class="col-md-3" id="content" >
-                            
-                            <div style="background-image:url({{asset('/storage/icons/article1.png')}}); background-size: cover;">
-                                <br>
-                                <br>
-                                <br>
-                                <h3>{{$data['article'][$i]->title}}</h3>
-                            
-                                <br>
-                            </div>
-                            <?php 
-                                $body = $data['article'][$i]->body;
-                                $subStr = substr($body,0,300).'.... <a href="'.asset('/article/'.$data['article'][$i]->link).'" style="color:blueviolet; font:300 12px oxygen;">Read More</a>';
-                            ?>
-                            <p>{!!$subStr!!}</p>
                         
+                        <div >
+                            <br>
+                            
+                            <h3>{{strtoupper($data['article'][$i]->title)}}</h3>
+                        
+                            <br>
+                        </div>
+                        <?php 
+                            $body = strip_tags($data['article'][$i]->body);
+                            $subStr = substr($body,0,500).'.... <a href="'.asset('/article/'.$data['article'][$i]->link).'" style="color:blueviolet;">Read More</a>';
+                        ?>
+                        <p id="bodyContent">{!!$subStr!!}</p>
+                    
                     </div>
                     <?php
                         $i++;
@@ -59,7 +61,7 @@
                     
                     <div class="col-md-3" id="content" >
                         
-                            @if($data['video'][$j]->type === 'single')
+                            @if($data['video'][$j]->type == 'single')
                                 <div style="position:relative; height:0;padding-bottom:56.21%">
                                     <iframe src="https://www.youtube.com/embed/{{$data['video'][$j]->link}}" style="position:absolute;width:100%;height:100%;left:0"  height="150px" frameborder="0" allow="autoplay; encrypted-media" ></iframe>
                                 </div>
@@ -71,10 +73,14 @@
                                 
                             @endif
                         
-                        <h3><a href="{{asset('/video/'.$data['video'][$j]->link)}}">{{$data['video'][$j]->title}}</a></h3>
-                        <br>
-        
-                        <p>{!!$data['video'][$j]->description!!}</p>
+                        <h3>{{strtoupper($data['video'][$j]->title)}}</h3>
+                        
+                        <?php 
+                            $body = strip_tags($data['video'][$j]->description);
+                            $subStr = substr($body,0,200).'....';
+                        ?>
+                        <p>{{$subStr}}</p>
+                        <a href="{{asset('/video/'.$data['video'][$j]->link)}}" class="btn btn-primary">Watch Video</a>
                     </div>
 
                     <?php
@@ -85,31 +91,30 @@
             @endwhile
 
 
-            @while(((int)$data['Acount'] - 1)>$i)
+            @while(((int)$data['Acount'] - 1)>=$i)
                 <div class="col-md-3" id="content" >
                     
-                    <div style="background-image:url({{asset('/storage/icons/article1.png')}}); background-size: cover;">
+                    <div>
                         <br>
-                        <br>
-                        <br>
-                        <h3>{{$data['article'][$i]->title}}</h3>
+                        
+                        <h3>{{strtoupper($data['article'][$i]->title)}}</h3>
                     
                         <br>
                     </div>
                     <?php 
-                        $body = $data['article'][$i]->body;
-                        $subStr = substr($body,0,550).'.... <a href="'.asset('/article/'.$data['article'][$i]->link).'" style="color:blueviolet;">Read More</a>';
-                    ?>
-                    <p>{!!$subStr!!}</p>
-                
-            </div>
+                            $body = strip_tags($data['article'][$i]->body);
+                            $subStr = substr($body,0,500).'.... <a href="'.asset('/article/'.$data['article'][$i]->link).'" style="color:blueviolet;">Read More</a>';
+                        ?>
+                    <p id="bodyContent">{!!$subStr!!}</p>
+                    
+                </div>
             <?php $i++; ?>
             @endwhile
 
-            @while( ((int)$data['Vcount'] - 1)>$j)
+            @while( ((int)$data['Vcount'] - 1)>=$j)
                 <div class="col-md-3" id="content" >
                     
-                        @if($data['video'][$j]->type === 'single')
+                        @if($data['video'][$j]->type == 'single')
                             <div style="position:relative; height:0;padding-bottom:56.21%">
                                 <iframe src="https://www.youtube.com/embed/{{$data['video'][$j]->link}}" style="position:absolute;width:100%;height:100%;left:0"  height="150px" frameborder="0" allow="autoplay; encrypted-media" ></iframe>
                             </div>
@@ -121,11 +126,15 @@
                             
                         @endif
                     
-                    <h3><a href="{{asset('/video/'.$data['video'][$j]->link)}}">{{$data['video'][$j]->title}}</a></h3>
-                    <br>
-
-                    <p>{!!$data['video'][$j]->description!!}</p>
-                </div>
+                        <h3>{{$data['video'][$j]->title}}</h3>
+                        
+                        <?php 
+                            $body = strip_tags($data['video'][$j]->description);
+                            $subStr = substr($body,0,200).'....';
+                        ?>
+                        <p>{{$subStr}}</p>
+                        <a href="{{asset('/video/'.$data['video'][$j]->link)}}" class="btn btn-primary">Watch Video</a>
+                    </div>
 
             <?php $j++;?>
             @endwhile
