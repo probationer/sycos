@@ -18,7 +18,22 @@
   <link rel="stylesheet" href="{{asset('assetsHome/socicon/css/styles.css')}}">
   <link rel="stylesheet" href="{{asset('assetsHome/animatecss/animate.min.css')}}">
   <link rel="stylesheet" href="{{asset('assetsHome/theme/css/style.css')}}">
-  <link rel="stylesheet" href="{{asset('assetsHome/mobirise/css/mbr-additional.css')}}" type="text/css">          
+  <link rel="stylesheet" href="{{asset('assetsHome/mobirise/css/mbr-additional.css')}}" type="text/css">    
+  
+  <style>
+    .input-group {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-box;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-align: center;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        width: 100%;
+    }
+  </style>
 </head>
 <body>
     @include('mainPages.mainPagesNav')
@@ -37,10 +52,18 @@
                     <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
                         
                     <div>The Intellectual Network</div></h3>
-                    <div class="mbr-section-btn">
-                        <a class="btn btn-md btn-secondary display-4" href="{{asset('/search')}}">
-                            <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Search Intellectual/Comapnions
-                        </a>
+                    <div class="mbr-section-btn" style="width:80%; display:block; float:unset; margin-left:10%;">
+                        <form method="get" action="{{asset('/search/')}}">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="query" style="font-family: roboto; font-size:1rem; font-weight: 400;" placeholder="Search Teachers, Students, Coaching Centers.. etc"/>
+                                <div class=" input-group-btn">
+                                    <button class="btn btn-danger" type="submit" name="search" style="font:200 1rem roboto;">
+                                         Search
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </form>
                     </div>
                 </div>
             </div>

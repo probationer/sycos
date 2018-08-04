@@ -79,10 +79,10 @@
         if(old('status')){
             $status = old('status');
             if($status == '1'){
-                $actualStaus = 'Available';
+                $actualStatus = 'Available';
                 $markAs = 'checked';
             }else{
-                $actualStaus = 'Unavailable';
+                $actualStatus = 'Unavailable';
                 $markAs = ' ';
             }
         }
