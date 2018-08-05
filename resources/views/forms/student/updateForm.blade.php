@@ -54,6 +54,27 @@
     else
         $description = $userData->description;
 
+    if(old('status')){
+        $status = old('status');
+        if($status == '1'){
+            $actualStatus = 'Available';
+            $markAs = 'checked';
+        }else{
+            $actualStatus = 'Unavailable';
+            $markAs = ' ';
+        }
+    }
+    else{
+        $status =$userData->status;
+        if($status == '1'){
+            $actualStatus = 'Available';
+            $markAs = 'checked';
+        }else{
+            $actualStatus = 'Unavailable';
+            $markAs = ' ';
+        }
+    }
+
 
     
 ?>
@@ -73,6 +94,17 @@
         <div id="profile-container">
            <image id="profileImageEg" src="{{asset('/showUserImage/'.$userData->imageLink)}}" class="img-circle" />
            <p id="below_profile">Upload Your Image</p>
+
+           <p id="below_profile_status"><?php echo $actualStatus; ?></p>
+            <div class="form-group" >
+                <div class="col-sm-12">
+                    <label class="switch">
+                        <input type="checkbox" id="StatusId" name="status" {{$markAs}} onclick="ChangeStatus()">
+                        <span class="slider round" ></span>
+                    </label>
+                </div>
+
+            </div>
            
         </div>
         <input id="imageUpload" type="file"name="profile_img" placeholder="Photo" capture>
@@ -210,7 +242,7 @@
             
             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                 <div class="col-sm-12"><label>Something About you </label>
-                <textarea type='text' class="form-control" rows="5" name="description" placeholder="Why you need teacher ? about your weak subjects or anything else. . . . . . .  .">
+                <textarea type='text' class="form-control" rows="5" name="description" placeholder="Why you need teacher ? about your weak subjects or anything else...">
                         {{$description}}
                 </textarea>
                     @if ($errors->has('description'))

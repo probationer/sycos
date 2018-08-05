@@ -151,7 +151,7 @@ class coachingDataController extends Controller
             $userId = Auth::user()->id;
             $profilpage = Auth::user()->name;
             
-            $SerialNoInTeacherTable = DB::table('coachingtable')->where('user_id', $id)->first()->id;
+            $CoachingTable = DB::table('coachingtable')->where('user_id', $id)->first();
             $subjectString =  SycosFunctions::ArryaToString($data->input('subjects'));
             $classString =  SycosFunctions::ArryaToString($data->input('classes'));
 
@@ -164,10 +164,10 @@ class coachingDataController extends Controller
                 $NameToStore = $fileName.'_'.time().'.'.$extension;
                 $path = $data->file('profile_img')->storeAs('public/profileImage',$NameToStore);
             }else{
-                $NameToStore = 'banner.png';
+                $NameToStore = $CoachingTable->imageLink;
             }
             
-            $dataInTable = coachingData::find($SerialNoInTeacherTable);
+            $dataInTable = coachingData::find($CoachingTable->id);
                 
                 $dataInTable->Institute_name = $data->input('Institute-Name');
                 $dataInTable->head_of_institute = $data->input('Head-of-institute');

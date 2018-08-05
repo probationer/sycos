@@ -136,7 +136,7 @@ class studentDataController extends Controller
             $userId = Auth::user()->id;
             $profilpage = Auth::user()->name;
             
-            $SerialNoInTeacherTable = DB::table('studenttable')->where('user_id', $id)->first()->id;
+            $StudentTable = DB::table('studenttable')->where('user_id', $id)->first();
             $subjectString =  SycosFunctions::ArryaToString($data->input('subjects'));
             $classString =  SycosFunctions::ArryaToString($data->input('class'));
             if($data->hasFile('profile_img')){
@@ -148,18 +148,17 @@ class studentDataController extends Controller
                 $NameToStore = $fileName.'_'.time().'.'.$extension;
                 $path = $data->file('profile_img')->storeAs('public/profileImage',$NameToStore);
             }else{
-                $NameToStore = 'default.png';
+                $NameToStore = $StudentTable->imageLink;
             }
 
 
             if($data->input('status') == "on"){
                 $Tstatus = "1";
-                
             }else{
                 $Tstatus = "0";
             }
 
-            $dataInTable = studentData::find($SerialNoInTeacherTable);
+            $dataInTable = studentData::find($StudentTable->id);
                 
                 $dataInTable->studentName = $data->input('Name');
                 $dataInTable->age = $data->input('age');
@@ -172,7 +171,7 @@ class studentDataController extends Controller
                 $dataInTable->state = $data->input('state');
                 $dataInTable->description = $data->input('description');
                 $dataInTable->imageLink = $NameToStore;
-                $dataInTable->status = $status;
+                $dataInTable->status = $Tstatus;
                // $dataInTable->status = '0';//$data->input('status');
                 
                 
@@ -203,7 +202,7 @@ class studentDataController extends Controller
             'age' => 'required|numeric|max:99|min:2',
             'subjects' => 'required|array',
             'class' => 'required|array',
-            'address' => 'required|String|max:255|min:3',
+            'address' => 'max:255',
             'contactNo' => 'required|numeric|min:7777777777|max:9999999999',
             'locality' => 'required|string|max:255|min:3',
             'pincode' => 'required|numeric|min:100001|max:999999 ',
@@ -218,7 +217,7 @@ class studentDataController extends Controller
             'age' => 'required|numeric|max:99|min:2',
             'subjects' => 'required|array',
             'class' => 'required|array',
-            'address' => 'required|String|max:255|min:3',
+            'address' => 'max:255',
             'contactNo' => 'required|numeric|min:7777777777|max:9999999999',
             'locality' => 'required|string|max:255|min:3',
             'pincode' => 'required|numeric|min:100001|max:999999 ',

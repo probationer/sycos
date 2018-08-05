@@ -263,25 +263,26 @@ class SycosAuthController extends Controller
         ]);
         
         //check if not verified then show verification Form
-        if(DB::table('account_verifications')->where('email',Auth::user()->email)->first()->verified != '0'){
-            $id = DB::table('account_verifications')->where('email',Auth::user()->email)->first()->email;
+        if(DB::table('account_verifications')->where('email',Auth::user()->email)->first()->verified == '0'){
+            $id = DB::table('account_verifications')->where('email',Auth::user()->email)->first()->id;
 
             if(DB::table('account_verifications')->where('email',Auth::user()->email)->first()->verification_code == $request->input('verification_code') ){
                 $verify = account_verification::find($id);
                 $verify->verified = '1';
                 $verify->save();
+                
+                return redirect('profile/'.Auth::user()->name)->with('success','Your Accoutn is verified. And veification badge is added.');
             }else{
                 return redirect('profile/'.Auth::user()->name)->with('error','Verification Code not matched');
             }
             
-
-
-            return redirect('profile/'.Auth::user()->name)->with('success','Your Accoutn is verified. And veification badge is added.');
+        }else{
+            return redirect('profile/'.Auth::user()->name)->with('error','Already Verified, Please Refresh This Page');
         }
         
     }
 
-
+    
     public function sendMail($mailId,$code){
         Mail::to($mailId)
               ->send(new SycosMail($code));

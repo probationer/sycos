@@ -139,7 +139,7 @@ class teacherDataController extends Controller
                 
             }
             
-            $SerialNoInTeacherTable = DB::table('teachertable')->where('user_id', $id)->first()->id;
+            $TeacherTableContent = DB::table('teachertable')->where('user_id', $id)->first();
             $subjectString =  SycosFunctions::ArryaToString($data->input('subjects'));
             $classString =  SycosFunctions::ArryaToString($data->input('class'));
             
@@ -152,10 +152,10 @@ class teacherDataController extends Controller
                 $NameToStore = $fileName.'_'.time().'.'.$extension;
                 $path = $data->file('profile_img')->storeAs('public/profileImage',$NameToStore);
             }else{
-                $NameToStore = 'default.png';
+                $NameToStore = $TeacherTableContent->imageLink;
             }
 
-                $dataInTable = teacherData::find($SerialNoInTeacherTable);
+                $dataInTable = teacherData::find($TeacherTableContent->id);
                 
                 $dataInTable->first_name = $data->input('fname');
                 $dataInTable->last_name = $data->input('lname');

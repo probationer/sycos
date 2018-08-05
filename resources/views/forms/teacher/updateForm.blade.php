@@ -76,26 +76,26 @@
     else
         $description = $userData->description;
 
-        if(old('status')){
-            $status = old('status');
-            if($status == '1'){
-                $actualStatus = 'Available';
-                $markAs = 'checked';
-            }else{
-                $actualStatus = 'Unavailable';
-                $markAs = ' ';
-            }
+    if(old('status')){
+        $status = old('status');
+        if($status == '1'){
+            $actualStatus = 'Available';
+            $markAs = 'checked';
+        }else{
+            $actualStatus = 'Unavailable';
+            $markAs = ' ';
         }
-        else{
-            $status =$userData->status;
-            if($status == '1'){
-                $actualStatus = 'Available';
-                $markAs = 'checked';
-            }else{
-                $actualStatus = 'Unavailable';
-                $markAs = ' ';
-            }
+    }
+    else{
+        $status =$userData->status;
+        if($status == '1'){
+            $actualStatus = 'Available';
+            $markAs = 'checked';
+        }else{
+            $actualStatus = 'Unavailable';
+            $markAs = ' ';
         }
+    }
             
 
 ?>
