@@ -136,7 +136,6 @@ class teacherDataController extends Controller
                 
             }else{
                 $Tstatus = "0";
-                
             }
             
             $TeacherTableContent = DB::table('teachertable')->where('user_id', $id)->first();
@@ -166,7 +165,7 @@ class teacherDataController extends Controller
                 $dataInTable->classes = $classString;
                 $dataInTable->experience = $data->input('exp');
                 $dataInTable->contact = $data->input('contactNo');
-                $dataInTable->locations = $data->input('locations');
+                $dataInTable->locations = $data->input('locations').',';
                 $dataInTable->pincode = $data->input('pincode');
                 $dataInTable->pursuing = $data->input('Pursuing');
                 $dataInTable->state = $data->input('state');
@@ -234,7 +233,7 @@ class teacherDataController extends Controller
             'Pursuing' => 'required|string|max:255|min:2',
             'state' => 'required|string|max:20|min:3',
             'description' => 'max:255|min:0',
-            'profile_img'=>'image|nullable|max:2999'
+            'profile_img'=>'image|nullable|max:19999',
         ]);
     }
 

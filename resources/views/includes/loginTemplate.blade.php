@@ -12,7 +12,7 @@
                     </div>
                           
                     <div class="panel-body">
-                            {{SycosFunctions::pageAddress()}}
+                            
                         <form class="form-horizontal" method="POST" action="{{asset('/login/'.SycosFunctions::pageAddress())}}">
                             {{ csrf_field() }}
     

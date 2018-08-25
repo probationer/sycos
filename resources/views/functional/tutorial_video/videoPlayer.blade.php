@@ -50,10 +50,15 @@
                     
                         <div class="col-md-6" style="margin:2% 2% 1% 2%;">
                             <h3>{{$videoArray['detail']->title}}</h3>
-                            @if($videoArray['detail']->type === 'single')
-                                <iframe width="600" height="337.5" src="https://www.youtube.com/embed/{{$videoArray['detail']->link}}" frameborder="0" allowfullscreen></iframe>
+                            @if($videoArray['detail']->type == 'single')
+                                <div style="position:relative; height:0;padding-bottom:56.21%">
+                                    <iframe src="https://www.youtube.com/embed/{{$videoArray['detail']->link}}" style="position:absolute;width:100%;height:100%;left:0"  height="150px" frameborder="0" allow="autoplay; encrypted-media" ></iframe>
+                                </div>
+                                
                             @else   
-                                <iframe width="600" height="337.5" src="https://www.youtube.com/embed/videoseries?list={{$videoArray['detail']->link}}" frameborder="0" allowfullscreen></iframe>
+                                <div style="position:relative; height:0;padding-bottom:56.21%">
+                                    <iframe src="https://www.youtube.com/embed/videoseries?list={{$videoArray['detail']->link}}" style="position:absolute;width:100%;height:100%;left:0"  height="150px" frameborder="0" allow="autoplay; encrypted-media" ></iframe>
+                                </div>
                             @endif
 
                             <p>{!!$videoArray['detail']->description!!}</p>
@@ -66,7 +71,7 @@
                             <hr><hr>
                             @else
                                 <div style="margin:1%">
-                                    @if(Auth::user()->id===$videoArray['detail']->user_id)
+                                    @if(Auth::user()->id==$videoArray['detail']->user_id)
                                         <a href="{{asset('/video/'.$videoArray['detail']->link.'/edit')}}" class="btn btn-default">Edit</a>
 
                                         {!!Form::open(['action'=>['videoController@destroy',$videoArray['detail']->link],'method'=>'POST','class'=>'pull-right'])!!}

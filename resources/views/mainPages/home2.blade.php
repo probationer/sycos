@@ -82,7 +82,9 @@
                     </div>
                     <div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url({{asset('assetsHome/images/mbr-1620x1080.jpg')}});">
                         <div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div>
-                        <img src="{{asset('assetsHome/images/2.jpg')}}"><div class="carousel-caption justify-content-center"><div class="col-10 align-left"><h2 class="mbr-fonts-style display-1">Write Article And Gain Popularity</h2><p class="lead mbr-text mbr-fonts-style display-5">You can write your unique article, notes for your students, or for other companions,</p></div></div></div></div>
+                        <img src="{{asset('assetsHome/images/2.jpg')}}"><div class="carousel-caption justify-content-center"><div class="col-10 align-left">
+                            <h2 class="mbr-fonts-style display-1"><a href="{{asset('article/create')}}" style="color:white;">Write Article And Gain Popularity</a></h2>
+                                <p class="lead mbr-text mbr-fonts-style display-5">You can write your unique article, notes for your students, or for other companions,</p></div></div></div></div>
                     </div>
                     <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url({{asset('assetsHome/images/mbr-1-1620x1080.jpg')}});"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(91, 104, 107);"></div>
                                     <img src="{{asset('assetsHome/images/mbr-1-1620x1080.jpg')}}">
@@ -93,7 +95,8 @@
                         <br>Connect with us and support us by sharing this initiative as well. 
                         <br>We request all the students,teachers or coaching institutions to register themselves for free. &nbsp;<br></p></div></div></div></div>
                     </div>
-                    <div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url({{asset('assetsHome/images/mbr-2-1620x1080.jpg')}});"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.7;"></div><img src="{{asset('assetsHome/images/2.jpg')}}"><div class="carousel-caption justify-content-center"><div class="col-10 align-left"><h2 class="mbr-fonts-style display-1">Link you YouTube Tutorials</h2>
+                    <div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url({{asset('assetsHome/images/mbr-2-1620x1080.jpg')}});"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.7;"></div><img src="{{asset('assetsHome/images/2.jpg')}}"><div class="carousel-caption justify-content-center"><div class="col-10 align-left">
+                        <h2 class="mbr-fonts-style display-1"><a href="{{asset('video/create')}}" style="color:white;">Link you YouTube Tutorials</a></h2>
                         <p class="lead mbr-text mbr-fonts-style display-5">You can link your youtube video and add link in your article</p></div></div></div></div>
                     </div>
                 </div>
@@ -109,22 +112,22 @@
 
         
 
-        <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(0, 0, 0);">
-        </div>
-
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="mbr-white col-md-10">
-                    <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-1"><span style="font-weight: normal;">Add Your Study Companions</span></h1>
-                    <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">Create Your Own Intellectual &nbsp;network</h3>
-                    
-                    <div class="mbr-section-btn align-center"><a class="btn btn-md btn-primary display-4" href="{{asset('/article')}}">Check Articles/Nots</a>
-                        <a class="btn btn-md btn-primary display-4" href="{{asset('/video')}}">Check Linked Videos</a></div>
+            <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(0, 0, 0);">
+            </div>
+    
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="mbr-white col-md-10">
+                        <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-1"><span style="font-weight: normal;">Add Your Study Companions</span></h1>
+                        <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">Create Your Own Intellectual &nbsp;network</h3>
+                        
+                        <div class="mbr-section-btn align-center"><a class="btn btn-md btn-primary display-4" href="{{asset('/article')}}">Check Articles/Notes</a>
+                            <a class="btn btn-md btn-primary display-4" href="{{asset('/video')}}">Check Linked Videos</a></div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-    </section>
+    
+        </section>
 
     @if(count($articleArray['articles']) > 0)
     <section class="features17 cid-qVV7hO2Rk4" id="features17-m" style="background-color:#ad4d4d;">
@@ -140,7 +143,7 @@
                     <div class="card-wrapper" >
                         
                         <div class="card-box" style="height:300px;" >
-                            <h2 class="card-title pb-3 mbr-fonts-style display-7" style="font:bold 16px roboto;">
+                            <h2 class="card-title pb-3 mbr-fonts-style display-7" style="font:bold 16px roboto;overflow:hidden;">
                                 {{strtoupper($articleArray['articles'][$i]->title)}}
                             </h2>
                             <p class="mbr-text mbr-fonts-style display-7" style="font:500 12px arial;">

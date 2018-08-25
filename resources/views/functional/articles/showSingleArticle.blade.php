@@ -25,7 +25,7 @@
         background-color: #3c5375;
         color: white;
     }
-@media screen and (max-height: 786px) {
+    @media screen and (max-height: 786px) {
             #leftMenu {
                 height: 85%; /* 100% Full-height */
                 position: fixed; /* Stay in place */
@@ -41,24 +41,32 @@
     <?php $compainonList = CompanionFunction::ListOfAllCompanions($articleArray['detail']->writer_id);
     ?>
         @if(count($articleArray) > 0)
-
-
             @if(articleFunction::IsPrivate($articleArray['detail']->writer_id) )
                 @if(Auth::user() && (in_array(Auth::user()->id, $compainonList) || Auth::user()->id == $articleArray['detail']->writer_id))
                     <div class="container-fluid" style="margin-top:50px;">
                         <div class="row">
-                            <div class="col-xs-2 collapse navbar-collapse " id="leftmenu">
+                            <div class="col-lg-2 collapse navbar-collapse " id="leftmenu">
                                     <div style="width:230px; "></div>
                                     <?php articleFunction::ListOfArticleLeft($articleArray['detail']->writer_id,$articleArray['detail']->title,$articleArray['writer']);?>
                             </div>
                             
-                            <div class="col-xs-7" style="margin-top:1%; height:auto; overflow-y:auto;">
-                                <h2>{{$articleArray['detail']->title}}</h2>
+                            <div class="col-lg-7" style="margin-top:1%; height:auto; overflow-y:auto;">
+                                <h1>{{$articleArray['detail']->title}}</h1>
                                 <br>
-                                <p >{!!$articleArray['detail']->body!!}</p>
+                                @if($articleArray['detail']->type == 'npdf')
+                                    <p>{!!$articleArray['detail']->body!!}</p>
+                                @else
+                                    <iframe src="{{asset('pdfs/'.$articleArray['detail']->link.'.pdf')}}" allowfullscreen webkitallowfullscreen width="100%" height="800px"></iframe>
+                                @endif
+                                <br><br>
+                                    <p style="font:300 14px roboto">Written By: <a href="{{asset('/profile/'.$articleArray['writer'])}}">{{ $articleArray['writer']}}</a>  </p>
                                 <br>
-                                <p style="font:bold 14px roboto">Written By: <a href="{{asset('/profile/'.$articleArray['writer'])}}">{{ $articleArray['writer']}}</a>  </p>
-                                <br>
+                                @if($articleArray['detail']->tags != NULL)
+                                    <p>
+                                        Tags : 
+                                        {!!articleFunction::tags($articleArray['detail']->tags)!!}
+                                    </p>
+                                @endif
                                 <hr>
                                 @guest
 
@@ -76,7 +84,7 @@
                                 @endguest
                             </div>
                             
-                            <div class="col-xs-2 collapse navbar-collapse" style="margin-top:20px">
+                            <div class="col-lg-2 collapse navbar-collapse" style="margin-top:20px">
                                 
                                 <?php videoFunction::ListOfRight($articleArray['detail']->writer_id,' ',$articleArray['writer']);?>
                                 
@@ -125,12 +133,12 @@
                 @else
                     <div class="container-fluid" style="margin-top:50px;">
                         <div class="row">
-                            <div class="col-xs-2 collapse navbar-collapse " id="leftmenu">
+                            <div class="col-lg-2 collapse navbar-collapse " id="leftmenu">
                                     <div style="width:230px; "></div>
                                     <?php articleFunction::ListOfArticleLeft($articleArray['detail']->writer_id,$articleArray['detail']->title,$articleArray['writer']);?>
                             </div>
                             
-                            <div class="col-xs-7" style="margin-top:1%; height:auto; overflow-y:auto;">
+                            <div class="col-lg-7" style="margin-top:1%; height:auto; overflow-y:auto;">
                                 <div class="well text-center">
                                    <h1><span class="glyphicon glyphicon-eye-close"></span> <br>
                                         This is a private article please add him/her as companion to read this article
@@ -138,7 +146,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-xs-2 collapse navbar-collapse" style="margin-top:20px">
+                            <div class="col-lg-2 collapse navbar-collapse" style="margin-top:20px">
                                 
                                 <?php videoFunction::ListOfRight($articleArray['detail']->writer_id,' ',$articleArray['writer']);?>
                                 
@@ -159,18 +167,30 @@
             @else
                 <div class="container-fluid" style="margin-top:50px;">
                     <div class="row">
-                        <div class="col-xs-2 collapse navbar-collapse " id="leftmenu">
+                        <div class="col-lg-2 collapse navbar-collapse " id="leftmenu">
                                 <div style="width:230px; "></div>
                                 <?php articleFunction::ListOfArticleLeft($articleArray['detail']->writer_id,$articleArray['detail']->title,$articleArray['writer']);?>
                         </div>
                         
-                        <div class="col-xs-7" style="margin-top:1%; height:auto; overflow-y:auto;">
-                            <h2>{{$articleArray['detail']->title}}</h2>
+                        <div class="col-lg-7" style="margin-top:1%; height:auto; overflow-y:auto;">
+                            
+                            <h1>{{ucwords($articleArray['detail']->title)}}</h1>
                             <br>
-                            <p >{!!$articleArray['detail']->body!!}</p>
+                            @if($articleArray['detail']->type == 'npdf')
+                                <p>{!!$articleArray['detail']->body!!}</p>
+                            @else
+                                
+                                <iframe src="{{asset('pdfs/'.$articleArray['detail']->link.'.pdf')}}" allowfullscreen webkitallowfullscreen width="100%" height="800px"></iframe>
+                            @endif
+                            <br><br>
+                                <p style="font:light 14px roboto">Written By: <a href="{{asset('/profile/'.$articleArray['writer'])}}">{{ ucwords($articleArray['writer'])}}</a>  </p>
                             <br>
-                            <p style="font:bold 14px roboto">Written By: <a href="{{asset('/profile/'.$articleArray['writer'])}}">{{ $articleArray['writer']}}</a>  </p>
-                            <br>
+                                @if($articleArray['detail']->tags != NULL)
+                                <p>
+                                    Tags : 
+                                    {!!articleFunction::tags($articleArray['detail']->tags)!!}
+                                </p>
+                                @endif
                             <hr>
                             @guest
 
@@ -188,7 +208,7 @@
                             @endguest
                         </div>
                         
-                        <div class="col-xs-2 collapse navbar-collapse">
+                        <div class="col-lg-2 collapse navbar-collapse">
                             
                             <?php videoFunction::ListOfRight($articleArray['detail']->writer_id,' ',$articleArray['writer']);?>
                             
@@ -239,7 +259,7 @@
 
         @else
             <div class="well">
-                No Article Found with title
+                No Article Found with this title
             </div>
         @endif
        

@@ -1,7 +1,8 @@
 @extends('components.site_forms.form_layout')
 
 @section('content')
-
+<link rel="stylesheet" type="text/css" href="{{asset('css/tag.css')}}">
+<script src="{{asset('js/tag.js')}}"></script>
 <?php
 
 
@@ -309,13 +310,14 @@
                       <div class="form-group">
                           <label class="col-sm-12" for="TextArea">Locations you can give classes ? (Can write more than one separate by comma) </label>
                             <div class="col-sm-12">
-                              <input type="numberic" class="form-control" name="locations" id="TextArea"  value="{{$locations}}" placeholder="Eg: Laxmi nagar,C.p.,Okhla etc">
+                              <input type="text" class="form-control" name="locations" id="TextArea"  value="{{$locations}}" placeholder="Eg: Laxmi nagar,C.p.,Okhla etc">
                                 @if ($errors->has('locations'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('locations') }}</strong>
                                     </span>
                                 @endif
                             </div>
+                            <script>$('input[name="locations"]').amsifySuggestags();</script>
                       </div>
                       
                       <div class="form-group">

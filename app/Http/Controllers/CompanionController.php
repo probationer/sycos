@@ -25,13 +25,13 @@ class CompanionController extends Controller
                     'companion' => '0',
                 ]);
     
-                return redirect('profile/'.$ReciverName)->with('report','Request send');
+                return redirect()->back()->with('report','Request send');
             }else{
-                return redirect('profile/')->with('error','Invalid Request');
+                return redirect()->back()->with('error','Invalid Request');
             }
            
         }else{
-            return redirect('profile/'.$ReciverName)->with('login','Please Login before you add as companion');
+            return redirect()->back()->with('login','Please Login before you add as companion');
         }
     }
 
@@ -51,13 +51,13 @@ class CompanionController extends Controller
                 $dataInTable->companion = '1';
                 $dataInTable->save();
 
-                return redirect('profile/'.$detail[1])->with('report','Congratulations! your got a new study companion');
+                return redirect()->back()->with('report','Congratulations! your got a new study companion');
             }else{
-                return redirect('profile/'.$detail[1])->with('error','Invalid Request');
+                return redirect()->back()->with('error','Invalid Request');
             }
             
         }else{
-            return redirect('profile/'.$detail[1])->with('login','Please Login before you add as companion');
+            return redirect()->back()->with('login','Please Login before you add as companion');
         }
         
     }
@@ -73,14 +73,14 @@ class CompanionController extends Controller
                     $requestDel = Add_companion::find($detail[0]);
                     $requestDel -> delete();
 
-                    return redirect('profile/'.$detail[1])->with('report','Request deleted');
+                    return redirect()->back()->with('report','Request deleted');
 
                 }else{
-                    return redirect('profile/'.$detail[1])->with('error','Invalid Request');
+                    return redirect()->back()->with('error','Invalid Request');
                 }
             
         }else{
-            return redirect('profile/'.$detail[1])->with('login','Please Login before you add as companion');
+            return redirect()->back()->with('login','Please Login before you add as companion');
         } 
     }
 }

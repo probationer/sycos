@@ -19,6 +19,9 @@ use App\AccountDataModel\coachingData;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SycosMail;
 use App\feedbackModel;
+use App\article;
+use App\Content_group;
+use File;
 
 class SycosAuthController extends Controller
 {
@@ -355,4 +358,69 @@ class SycosAuthController extends Controller
         $file = Storage::get('/public/profileImage/'.$fileName);
         return new Response($file,200);
     }
+    
+    public function getPdfFiles($fileName){
+        $file = Storage::get('/public/docs/'.$fileName);//storage_path().'/docs/'.$fileName;
+        //$file = File::get($path);
+        //$type = mime_content_type('storage/docs/'.$fileName);//File::mimeType('storage/docs/'.$fileName);
+        $response =new Response($file,200);
+        $response->header("Content-Type", 'application/pdf');
+        return $response;
+    }
+
+    public function createContentGroup(Request $gname){
+        $this->validate($gname ,[
+            'gname'=>'required|string|unique:content_group|min:3|max:100',
+            'tags' => 'max:120',
+        ]);
+                
+        if(Auth::user()){
+            try{
+                Content_group::create([
+                    'user_id' => Auth::user()->id,
+                    'gname' =>$gname['gname'],
+                    'tags' => $gname['tags'],
+                ]);
+            }catch(Exception $e){
+                return 'Not Proper content ';
+            }
+            
+    
+            if($gname['page']=='article'){
+
+                if(DB::table('articles')->where('link',$gname['link'])->exists()){
+                    $aid = DB::table('articles')->where('link',$gname['link'])->get()->first()->id;
+                    $article = article::find($aid);
+                    $article->gname = $gname['gname'];
+                    $article->save();
+                }
+               
+            }
+            return redirect()->back()->with('success','New group is created and article is added');
+        
+        }else{
+            return redirect()->back()->with('login','Please login');
+        }
+    }
+
+    public function addContentGroup(Request $gname){
+         
+        if(Auth::user()){
+    
+            if($gname['page']=='article'){
+
+                if(DB::table('articles')->where('link',$gname['link'])->exists()){
+                    $aid = DB::table('articles')->where('link',$gname['link'])->get()->first()->id;
+                    $article = article::find($aid);
+                    $article->gname = $gname['group'];
+                    $article->save();
+                }
+            }
+            return redirect()->back()->with('success','Article is now added to '.trim($gname['group']).' group');
+        
+        }else{
+            return redirect()->back()->with('login','Please login');
+        }
+    }
+
 }

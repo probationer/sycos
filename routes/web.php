@@ -22,6 +22,8 @@ Route::get('/privacy_policy', 'pageController@privacy_policy');
 
 //Route::resource('login','loginController');
 Route::resource('/article','articleController');
+Route::post('/pdfupload','articleController@fileUpload');
+
 Route::resource('/video','videoController');
 
 
@@ -76,12 +78,20 @@ Route::get('/profile/{PageLink}/{tab}', 'profileController@pageTabs');
 
 Route::post('/profile/{PageLink}/setting', 'SycosAuthController@privacySettings');
 
+Route::post('/groupifyNew','SycosAuthController@createContentGroup');
+Route::post('/groupify','SycosAuthController@addContentGroup');
+
 Route::post('/sendmail', 'SycosAuthController@sendMailDemo');
 Route::get('/sendmail', 'SycosAuthController@showForm');
 
 Route::get('/showUserImage/{fileName}',[
     'as'=>'info',
     'uses'=>'SycosAuthController@getUserFiles'
+    ]);
+
+Route::get('/pdfs/{fileName}',[
+    'as'=>'info',
+    'uses'=>'SycosAuthController@getPdfFiles'
     ]);
 
 //to change the user_id

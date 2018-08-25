@@ -391,6 +391,30 @@ class SycosFunctions extends Facade
         $count = $count + DB::table('contactinfo')->count();
         return $count;
     }
+
+    public static function content_list($value){
+        if(Auth::user()){
+            $list = DB::table('articles')->where('writer_id',Auth::user()->id)->get();
+            $listReturn = null;
+            foreach($list as $v){
+                $listReturn .= '<option value="'.$v->link.'">'.$v->title.'</option>';
+            }
+            return $listReturn;  
+        }
+        
+    }
+
+    public static function group_list(){
+        if(Auth::user()){
+            $list = DB::table('content_group')->where('user_id',Auth::user()->id)->get();
+            $listReturn = null;
+            foreach($list as $v){
+                $listReturn .= '<option value="'.$v->gname.'">'.$v->gname.'</option>';
+            }
+            return $listReturn;
+        }
+    }
+    
     
 }
 

@@ -2,7 +2,8 @@
 
 
 @section('content')
-
+<link rel="stylesheet" type="text/css" href="{{asset('css/tag.css')}}">
+<script src="{{asset('js/tag.js')}}"></script>
 <div>
     <div class="container" id="form-holder">
         <div class="text-center">
@@ -106,7 +107,7 @@
                                 <?php print_r(old('subjects')); ?>
                                 <select name="subjects[]" class="selectpicker show-menu-arrow form-control" required="" multiple data-max-options="24" data-live-search="true">    
                                     <?php
-                                        if(sizeof(old('subjects'))===0){
+                                        if(sizeof(old('subjects'))==0){
                                             $dummyArray = array('none');
                                             SycosFunctions::MarkSelectedArrayReturn($dummyArray,SycosFunctions::PutList('subject'));
                                         }else{
@@ -131,7 +132,7 @@
                                 <select name="class[]" class="selectpicker show-menu-arrow form-control" required="" multiple data-max-options="16" data-live-search="true">                                 
                                     <?php
                                         
-                                        if(sizeof(old('class'))===0){
+                                        if(sizeof(old('class'))==0){
                                             $dummyArray = array('none');
                                             SycosFunctions::MarkSelectedArrayReturn($dummyArray,SycosFunctions::PutList('class'));
                                         }else{
@@ -202,13 +203,14 @@
                         <div class="form-group">
                             <label class="col-sm-12" for="TextArea">Locations you can give classes ? (Can write more than one separate by comma) </label>
                                 <div class="col-sm-12">
-                                <input type="numberic" class="form-control" name="locations" id="TextArea"  value="{{old('locations')}}" placeholder="Eg: Laxmi nagar,C.p.,Okhla etc">
+                                <input type="text" class="form-control" name="locations" id="TextArea"  value="{{old('locations')}}" placeholder="Eg: Laxmi nagar,C.p.,Okhla etc">
                                     @if ($errors->has('locations'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('locations') }}</strong>
                                         </span>
                                     @endif
                                 </div>
+                                <script>$('input[name="locations"]').amsifySuggestags();</script>
                         </div>
                         
                         <div class="form-group">
