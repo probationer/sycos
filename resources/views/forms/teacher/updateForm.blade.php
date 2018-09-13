@@ -100,7 +100,6 @@
             
 
 ?>
-@include('includes.ImageEditWindow')
 <div class="middle">
     <div class="container" id="form-holder" >
       <div class="text-center">
@@ -195,8 +194,6 @@
                               <label>Age</label>
                               <select class="form-control" name="age" required>
                                 <?php
-                                    
-                                    
                                     SycosFunctions::MarkSelected($age,SycosFunctions::PutList('age'));
                                     
                                 ?>  

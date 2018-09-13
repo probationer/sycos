@@ -105,7 +105,7 @@ class coachingDataController extends Controller
             'subjects' => 'required|array',
             'classes' => 'required|array',
             'opening-year' => 'required|numeric|max:2018',
-            'contactNo' => 'required|numeric|min:7777777777|max:9999999999',
+            'contactNo' => 'required|string|max:10|min:10',
             'location' => 'required|string|max:255|min:3',
             'pincode' => 'required|numeric|min:100001|max:999999 ',
             'landmark' => 'required|string|max:255|min:2',
