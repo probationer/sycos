@@ -1,3 +1,5 @@
-@extends('components.profile.')
+@extends('layouts.app')
+
+    
 
 @section('content')

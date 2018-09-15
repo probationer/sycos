@@ -18,8 +18,9 @@ class searchController extends Controller
         if($request->input('query') != NULL){
             
             $statingtime = microtime();
+            $actualInput = $request->input('query');
             $inputstring = SycosFunctions::input_validate($request->input('query'));
-
+            
            // $gendersArray = explode(',', SycosFunctions::PutList('sex'));
         
            if(isset($_GET['type'])){
@@ -30,13 +31,11 @@ class searchController extends Controller
 
 
             if(isset($_GET['state'])){
-            
                 if($_GET['state']=='None' || $_GET['state']== NULL  ){
                     $FilterState = '%';
                 }else{
                     $FilterState = $_GET['state'];
                 }
-                
             }else{
                 $FilterState = '%';
             }
@@ -109,37 +108,45 @@ class searchController extends Controller
             $dataReturn['institute'] = $dataReturnCoaching;
             $dataReturn['teacher'] = $dataReturnTeacher;
 
+            if(count($finalArray)>0){
+                foreach($finalArray as $f){
+                    if(!(in_array($f, $checkArray))){
+                        array_push($checkArray, $f);
+                        $type = DB::table('signup')->where('id',$f)->first()->usertype;
+                        switch ($type){
+                            case 'Student':
+                                $typeWithUser_id[$f] = 'Student';
+                                break;
+                            
+                            case 'Coaching Institute':
+                                $typeWithUser_id[$f] = 'Institute';
+                                break;
+                            
+                            case 'Teacher':
+                                $typeWithUser_id[$f] = 'Teacher';
+                                break;
+                            
+                            default :
+                                break;
+                        }
 
-            foreach($finalArray as $f){
-                if(!(in_array($f, $checkArray))){
-                    array_push($checkArray, $f);
-                    $type = DB::table('signup')->where('id',$f)->first()->usertype;
-                    switch ($type){
-                        case 'Student':
-                            $typeWithUser_id[$f] = 'Student';
-                            break;
-                        
-                        case 'Coaching Institute':
-                            $typeWithUser_id[$f] = 'Institute';
-                            break;
-                        
-                        case 'Teacher':
-                            $typeWithUser_id[$f] = 'Teacher';
-                            break;
-                        
-                        default :
-                            break;
                     }
-
+                    
                 }
-                
+                $dataReturn['UserIdLIst'] = $typeWithUser_id;
+                $dataReturn['query'] = $actualInput;
+                return view('functional.search.searchResultPage')->with('result',$dataReturn);
+            }else{
+                $dataReturn['UserIdLIst'] = NULL;
+                $dataReturn['query'] = $actualInput;
+                return view('functional.search.searchResultPage')->with('result',$dataReturn);
             }
-
-            $dataReturn['UserIdLIst'] = $typeWithUser_id;
+            
             //print_r($typeWithUser_id);
-            return view('functional.search.searchResultPage')->with('result',$dataReturn);
+            
         }else{
             $dataReturn = null;
+
             return view('functional.search.searchResultPage')->with('result',$dataReturn);
         }
  

@@ -136,6 +136,7 @@ class SycosFunctions extends Facade
     public static function input_validate($data) {
         // take input of data trim, remove forward and backward slash, maintains hmtl tags. and sanitize string
         $data1 = trim($data);
+        $data1 = substr_replace("%","",0);
         $data1 = stripslashes($data1);
         $data1 = htmlspecialchars($data1);
         $data1 = filter_var($data1, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);

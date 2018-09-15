@@ -198,6 +198,11 @@ class SearchMethod extends Facade
                 </div>
             </div>';
     }
+
+    public static function Noresult($data){
+        return "<h4>Sorry no result found for <i>".$data."</i><br>
+                Please write a <a href='".asset('/suggestions')."'>Feedback</a> or any <a href='".asset('/suggestions')."'>Suggestion for improvement<a></h4>";
+    }
 }
 
     ?>

@@ -149,7 +149,7 @@
 	</div>
     <div class="container-fluid">
         <div class="middle-section-inside">
-            @if(count($result)>0)
+            @if(count($result['UserIdLIst'])>0)
 
             <?php 
                 //print_r(array_keys($result['UserIdLIst']));
@@ -178,7 +178,10 @@
                     }
                 }
             ?>
-                
+            @else
+                <?php
+                    echo SearchMethod::Noresult($result["query"]);
+                ?>
                 
             @endif
             
