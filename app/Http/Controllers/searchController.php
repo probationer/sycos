@@ -18,8 +18,8 @@ class searchController extends Controller
         if($request->input('query') != NULL){
             
             $statingtime = microtime();
-            $actualInput = $request->input('query');
-            $inputstring = SycosFunctions::input_validate($request->input('query'));
+            $actualInput = $request->input('query'); //query by user
+            $inputstring = SycosFunctions::input_validate($request->input('query')); //removing the impurities
             
            // $gendersArray = explode(',', SycosFunctions::PutList('sex'));
         
@@ -42,17 +42,18 @@ class searchController extends Controller
 
             $stringArray = explode(' ',$inputstring);
             $stringArray = array_filter($stringArray, "SycosFunctions::checkspace"); //removing the space from the array
-            $exceptionWords = array('Garden','Rani','garden','GARDEN','nagar','NAGAR','Nagar','colony','COLONY','Colony','Park','park','PARK');
+            $exceptionWords = array('Garden','garden','GARDEN','nagar','NAGAR','Nagar','colony','COLONY','Colony','Park','park','PARK');
             
             $search_table_name = array('coachingtable','teachertable','studenttable','state');
             $coloumArray_coachingtable = array('Institute_name','address','location','landmark','subjects','classes','state');
             $coloumArray_teachertable = array('first_name','last_name','qualifications','sex','subjects','classes','state');
             $coloumArray_studnetTable = array('studentName','subjects','classes','area','state');
+            $coloumArray_articleTable = array('title','body','tags','gname');
         
             $dataReturnTeacher = array();
             $dataReturnStudent = array();
             $dataReturnCoaching = array();
-
+            $dataReturnArticle = array();
 
             switch ($type){
                 case 'Students':
@@ -67,12 +68,18 @@ class searchController extends Controller
                     $dataReturnTeacher = searchController::teacherSearch($stringArray,$coloumArray_teachertable,$FilterState);
                     break;
                 
+                case 'Article':
+                    $dataReturnArticle = searchController::articleSearch($stringArray,$coloumArray_articleTable);
+                    break;
+
                 case 'all':
+                    $dataReturnArticle = searchController::articleSearch($stringArray,$coloumArray_articleTable);
                     $dataReturnStudent = searchController::studentSearch($stringArray,$coloumArray_studnetTable,$FilterState);
                     $dataReturnTeacher = searchController::teacherSearch($stringArray,$coloumArray_teachertable,$FilterState);
                     $dataReturnCoaching = searchController::coachingSearch($stringArray,$coloumArray_coachingtable,$FilterState);
                     break;
                 default :
+                    $dataReturnArticle = searchController::articleSearch($stringArray,$coloumArray_articleTable);
                     $dataReturnStudent = searchController::studentSearch($stringArray,$coloumArray_studnetTable,$FilterState);
                     $dataReturnTeacher = searchController::teacherSearch($stringArray,$coloumArray_teachertable,$FilterState);
                     $dataReturnCoaching = searchController::coachingSearch($stringArray,$coloumArray_coachingtable,$FilterState);
@@ -108,7 +115,7 @@ class searchController extends Controller
             $dataReturn['institute'] = $dataReturnCoaching;
             $dataReturn['teacher'] = $dataReturnTeacher;
 
-            if(count($finalArray)>0){
+            if(count($finalArray) > 0 ){
                 foreach($finalArray as $f){
                     if(!(in_array($f, $checkArray))){
                         array_push($checkArray, $f);
@@ -135,6 +142,7 @@ class searchController extends Controller
                 }
                 $dataReturn['UserIdLIst'] = $typeWithUser_id;
                 $dataReturn['query'] = $actualInput;
+                $dataReturn['count'] = count($FilterState);
                 return view('functional.search.searchResultPage')->with('result',$dataReturn);
             }else{
                 $dataReturn['UserIdLIst'] = NULL;
@@ -145,8 +153,8 @@ class searchController extends Controller
             //print_r($typeWithUser_id);
             
         }else{
-            $dataReturn = null;
-
+            $dataReturn['UserIdLIst'] = null;
+            $dataReturn['query'] = "Search Something";
             return view('functional.search.searchResultPage')->with('result',$dataReturn);
         }
  
@@ -202,7 +210,19 @@ class searchController extends Controller
         InstituteSearch($stringArray,$coloumArray_coachingtable,$FilterState);
         teacherSearch($stringArray,$coloumArray_teachertable,$FilterState);
         studentSearch($stringArray,$coloumArray_studnetTable,$FilterState);
+    }
     
+    function articleSearch($stringArray,$coloumArray_articleTable){
+        $article = array();
+        foreach($stringArray as $word){
+            foreach($coloumArray_articleTable as $coloumName){
+                if(DB::table('articles')->where($coloumnName,'like','%'.$word.'%')->exists()){
+                    $user = DB::table('articles')->where($coloumnName,'like','%'.$word.'%')->get();
+                    
+                }
+            }
+        }
+        return $article;
     }
 
 }

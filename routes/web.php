@@ -19,6 +19,11 @@ Route::get('/feeds', 'pageController@feeds');
 Route::get('/suggestions', 'pageController@suggestions');
 Route::post('/feedback', 'SycosAuthController@feedback');
 Route::get('/privacy_policy', 'pageController@privacy_policy');
+Route::get('/sycos_team', 'pageController@team');
+Route::get('/get_recommendation', 'pageController@recommendation');
+Route::get('/student', 'pageController@student');
+Route::get('/teacher', 'pageController@teacher');
+Route::get('/institute', 'pageController@institute');
 
 //Route::resource('login','loginController');
 Route::resource('/article','articleController');
@@ -38,6 +43,7 @@ Route::get('/login', 'SycosAuthController@showLoginForm')->name('Auth_sycos.logi
 Route::post('/login', 'SycosAuthController@submitLoginForm');
 Route::post('/login/{pageAddress}', ['as'=>'info','uses'=>'SycosAuthController@submitLoginForm_viaAnyPage'] );
 Route::post('/VerifyEmail', 'SycosAuthController@VerifyEmail');
+Route::post('/resendCode', 'SycosAuthController@resendVerificationCode');
 Route::post('/privacy/{profilePage}', ['as'=>'info','uses'=>'SycosAuthController@privacySettings']);
 Route::post('/changePassword/{profilePage}', ['as'=>'info','uses'=>'SycosAuthController@changesetting']);
 

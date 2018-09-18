@@ -285,12 +285,29 @@ class SycosAuthController extends Controller
         
     }
 
+    public function resendVerificationCode(Request $request){
+        
+        if(!Auth::user()){
+            return redirect('/login')->with('error','Login Before Veification');
+        }
+
+        $userMail = DB::table('signup')->where('id',Auth::user()->id)->first()->email;
+        $code =  rand(10,10000);
+        
+        $verificationID = DB::table('account_verifications')->where('email',$userMail)->first()->id;
+
+        $dataInTable = account_verification::find($verificationID);
+        $dataInTable->verification_code = $code;
+        $dataInTable->save();
+
+        return SycosAuthController::sendMail($userMail,$code);
+    }
     
     public function sendMail($mailId,$code){
         Mail::to($mailId)
               ->send(new SycosMail($code));
 
-            return redirect()->back();
+            return redirect()->back()->with('report','Verification Code is send');
     }
     public function sendMailDemo(Request $request){
         Mail::to($request->input('email'))

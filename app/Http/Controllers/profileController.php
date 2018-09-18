@@ -140,7 +140,7 @@ class profileController extends Controller
             $id = $data->id;
 
             $userId = Auth::user()->id;
-            if($userId!==$id){
+            if($userId!=$id){
                 return redirect('/profile/'.$userId);
             }
 
@@ -327,7 +327,7 @@ class profileController extends Controller
                     //return $data->usertype;
                     $data = DB::table('studenttable')->where('user_id', $id)->first();
                     $array = ['detail'=>$data,'verified'=>profileController::checkEmailVeified(),'type'=>$details->usertype];
-                    if($tab === 'detail'){
+                    if($tab == 'detail'){
                         return view('functional.profile.Student.'.$tab)->with('userData',$array);
                     }else{
                         return view('functional.profile.common.'.$tab)->with('userData',$array);
@@ -339,7 +339,7 @@ class profileController extends Controller
 
                     $data = DB::table('teachertable')->where('user_id', $id)->first();
                     $array = ['detail'=>$data,'verified'=>profileController::checkEmailVeified(),'type'=>$details->usertype];
-                    if($tab === 'detail'){
+                    if($tab == 'detail'){
                         return view('functional.profile.Teacher.'.$tab)->with('userData',$array);
                     }else{
                         return view('functional.profile.common.'.$tab)->with('userData',$array);
@@ -353,7 +353,7 @@ class profileController extends Controller
                     $data = DB::table('coachingtable')->where('user_id', $id)->first();
 
                     $array = ['detail'=>$data,'verified'=>profileController::checkEmailVeified(),'type'=>$details->usertype];
-                    if($tab === 'detail'){
+                    if($tab == 'detail'){
                         return view('functional.profile.Institute.'.$tab)->with('userData',$array);
                     }else{
                         return view('functional.profile.common.'.$tab)->with('userData',$array);

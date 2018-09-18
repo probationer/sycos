@@ -13,7 +13,7 @@
             
             <div class="form-group">
                 <label style="font:200 14px oxygen; color:white; margin:10px">
-                    <a href="#" style="color:white;">Resend Verification Code</a>
+                    <a href="{{asset('/resendCode')}}" style="color:white;">Resend Verification Code</a>
                 </label>
                 
             </div>

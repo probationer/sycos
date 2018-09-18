@@ -118,7 +118,33 @@ class pageController extends Controller
     $array = ['title'=>$title];
     return view('mainPages.newFeeds')->with('userData',$array);
     }
-
     
+    public function team(){
+        $title= 'Our Lazy Team | Sycos';
+        $array = ['title'=>$title];
+        return view('mainPages.team')->with('userData',$array);
+    }
+
+    public function recommendation(){
+        $title= 'Recommendation | Sycos';
+        $array = ['title'=>$title];
+        return view('mainPages.recommendation')->with('userData',$array);
+    }
+
+    public function student(){
+        $title= 'Student Benifit | Sycos';
+        $array = ['title'=>$title];
+        return view('mainPages.student_benifit')->with('userData',$array);
+    }
+    public function teacher(){
+        $title= 'Teacher Benifit | Sycos';
+        $array = ['title'=>$title];
+        return view('mainPages.teacher_benifit')->with('userData',$array);
+    }
+    public function institute(){
+        $title= 'Institute Benifit | Sycos';
+        $array = ['title'=>$title];
+        return view('mainPages.institute_benifit')->with('userData',$array);
+    }
 
 }
