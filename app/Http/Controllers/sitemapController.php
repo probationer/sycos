@@ -9,13 +9,20 @@ class sitemapController extends Controller
 {
     
     public function index(){
-        $content = array('profile','article','video',);
+        //$content = array('profile.xml','article.xml','video.xml',);
         $pages = array('search','get_recommendation','student','teacher','institute','feeds',
                         'video','about','signup','suggestions','sycos_team','login','article','privacy_policy',);
-        return response()->view('sitemap.index',[
-            'otherMap'=>$content,
-            'secondLevel'=>$pages
+        
+        $profile = DB::table('signup')->orderBy('updated_at','desc')->get();
+        $article = DB::table('articles')->orderBy('updated_at','desc')->get();
+        $video = DB::table('video')->orderBy('updated_at','desc')->get();
 
+        return response()->view('sitemap.index',[
+            //'otherMap'=>$content,
+            'secondLevel'=>$pages,
+            'profile'=>$profile,
+            'article'=>$article,
+            'video'=>$video
         ])->header('Content-Type', 'text/xml');
     }
 

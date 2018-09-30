@@ -106,9 +106,9 @@ Route::get('/pdfs/{fileName}',[
     ]);
 
 
-Route::get('/sitemap','sitemapController@index');
-Route::get('/sitemap/profile','sitemapController@profile');
-Route::get('/sitemap/article','sitemapController@article');
-Route::get('/sitemap/video','sitemapController@video');
+Route::get('/sitemap.xml','sitemapController@index');
+Route::get('/sitemap/profile.xml','sitemapController@profile');
+Route::get('/sitemap/article.xml','sitemapController@article');
+Route::get('/sitemap/video.xml','sitemapController@video');
 //to change the user_id
 //Route::get('/matchId','SycosAuthController@matchId');
