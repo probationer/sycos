@@ -34,6 +34,16 @@
         $stateFilter = NULL;
     }
 
+    if(isset($_GET['query'])){
+        if(isset($_GET['state'])){
+            $url ='?query='.$_GET['query'].'&search=&state='.$_GET['state'];
+        }
+        else
+            $url ='?query='.$_GET['query'];
+    }else{
+        $url =" ";
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -264,22 +274,22 @@
                 <center>
                     <div class="" id="grouptab">    
                         <span class="tab2">
-                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search?query='.$_GET['query'])}}">All</a></span>
+                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search'.$url)}}">All</a></span>
                         </span>
                         <span class="tab2">
-                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/article?query='.$_GET['query'])}}">Article</a></span>
+                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/article'.$url)}}">Article</a></span>
                         </span>
                         <span class="tab2">
-                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/teacher?query='.$_GET['query'])}}">Teachers</a></span>
+                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/teacher'.$url)}}">Teachers</a></span>
                         </span>
                         <span class="tab2">
-                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/student?query='.$_GET['query'])}}">Students</a></span>
+                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/student'.$url)}}">Students</a></span>
                         </span>
                         <span class="tab2">
-                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/video?query='.$_GET['query'])}}">Videos</a></span>
+                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/video'.$url)}}">Videos</a></span>
                         </span>
                         <span class="tab2">
-                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/institute?query='.$_GET['query'])}}">Institutes</a></span>
+                            <span  class="dtviD" style="display: inline-block;"><a href="{{asset('/search/institute'.$url)}}">Institutes</a></span>
                         </span>     
                     </div> 
                 </center>
@@ -363,40 +373,46 @@
                 @if(count($result['UserIdLIst'])>0)
 
                 <?php 
-                    print_r(array_keys($result['UserIdLIst']));
+                    //print_r(array_keys($result['UserIdLIst']));
                     $s=$i=$t=$a=$v=0;
                     foreach(array_keys($result['UserIdLIst']) as $u){
                         //print_r($result['student']);
                         switch($result['UserIdLIst'][$u]){
                             case 'Student':
                                 if($s<sizeof($result['student'])){
+                                    //print_r($result['student'][$s]);
                                     echo SearchMethod::studentProfileCard($result['student'][$s]);
-                                }
                                     $s++;
+                                }
+                                    
                             break;
                             case 'Institute':
                                 if($i<sizeof($result['institute'])){
                                     echo SearchMethod::instituteProfileCard($result['institute'][$i]);
+                                    $i++;
                                 }
-                                $i++;
+                                
                             break;
                             case 'Teacher':
-                                if($i<sizeof($result['teacher'])){
+                                if($t<sizeof($result['teacher'])){
                                     echo SearchMethod::teacherProfileCard($result['teacher'][$t]);
+                                    $t++;
                                 }
-                                $t++;
+                                
                             break;
                             case 'Article':
-                                if($i<sizeof($result['article'])){
+                                if($a<sizeof($result['article'])){
                                     echo SearchMethod::articleCard($result['article'][$a]);
+                                    $a++;
                                 }
-                                $a++;
+                                
                             break;
                             case 'Video':
-                                if($i<sizeof($result['video'])){
+                                if($v<sizeof($result['video'])){
                                     echo SearchMethod::videoCard($result['video'][$v]);
+                                    $v++;
                                 }
-                                $v++;
+                                
                             break;
                         }
                         
