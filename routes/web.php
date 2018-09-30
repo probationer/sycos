@@ -13,6 +13,10 @@
 
 Route::get('/', 'pageController@index');
 //Route::resource('/','pageController');
+//google verification
+Route::get('/googlef9fe7aff060ba801.html',function(){
+    return view('googlef9fe7aff060ba801');
+});
 
 Route::get('/about', 'pageController@about');
 Route::get('/feeds', 'pageController@feeds');
@@ -101,5 +105,10 @@ Route::get('/pdfs/{fileName}',[
     'uses'=>'SycosAuthController@getPdfFiles'
     ]);
 
+
+Route::get('/sitemap','sitemapController@index');
+Route::get('/sitemap/profile','sitemapController@profile');
+Route::get('/sitemap/article','sitemapController@article');
+Route::get('/sitemap/video','sitemapController@video');
 //to change the user_id
 //Route::get('/matchId','SycosAuthController@matchId');
