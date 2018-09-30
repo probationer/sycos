@@ -378,11 +378,15 @@ class SycosAuthController extends Controller
     
     public function getPdfFiles($fileName){
         $file = Storage::get('/public/docs/'.$fileName);//storage_path().'/docs/'.$fileName;
+        //Storage::setVisibility($file, 'public');
+         Storage::getVisibility('/public/docs/'.$fileName);
+        $url = storage::url($file);
         //$file = File::get($path);
         //$type = mime_content_type('storage/docs/'.$fileName);//File::mimeType('storage/docs/'.$fileName);
         $response =new Response($file,200);
         $response->header("Content-Type", 'application/pdf');
-        return $response;
+        //return $response;
+        return $url;
     }
 
     public function createContentGroup(Request $gname){

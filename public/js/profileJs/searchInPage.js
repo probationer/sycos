@@ -25,5 +25,13 @@
         });
         });
     });
-               
 
+    //link with searchPage
+    $(document).ready(function(){
+        $("#contentSearch").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".middle-section-inside .container-fluid").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+        });
+    });

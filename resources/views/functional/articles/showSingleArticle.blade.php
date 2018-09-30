@@ -1,5 +1,24 @@
 @extends('components.functionalPages.articles.layout')
+<!--
+har baat likhi nhi jati,
 
+jaise ki tumhare mere karib aana,
+likha thodi ja skta h,
+
+
+chlte chlte hatho ka takra jana,
+fursat ke lamho m bs hum dono ke hone ki aas,
+ye likha nhi jata,
+
+colg m aate hi tumhse milne ki chah,
+ye likha thodi jata h,
+
+tumhari khushboo ka ahsaas,
+tumhari sasso ka mujhko chuna,
+ye likha thodi jata h,
+
+ye bs mehsus ki jati h, likha thodi jata h ;*
+-->
 @section('content')
 
 <style>
@@ -179,8 +198,45 @@
                             @if($articleArray['detail']->type == 'npdf')
                                 <p>{!!$articleArray['detail']->body!!}</p>
                             @else
+                                {{asset('pdfs/'.$articleArray['detail']->link.'.pdf')}}
+                            
+                                <iframe src="{{asset('pdfs/'.$articleArray['detail']->link.'.pdf')}}" allowfullscreen webkitallowfullscreen width="100%" height="800px">
                                 
-                                <iframe src="{{asset('pdfs/'.$articleArray['detail']->link.'.pdf')}}" allowfullscreen webkitallowfullscreen width="100%" height="800px"></iframe>
+                                </iframe>
+                                
+                                <?php    
+                                    $base64 = asset('pdfs/'.$articleArray['detail']->link.'.pdf');
+                                    $binary = base64_decode($base64);
+                                    file_put_contents('my.pdf', $binary);
+                                    header('Content-type: application/pdf');
+                                    header('Content-Disposition: attachment; filename="my.pdf"');
+                                    echo $binary;
+                                ?>
+
+                                <script>
+                                    var request = new XMLHttpRequest();
+                                    request.open("GET", {{asset('pdfs/'.$articleArray['detail']->link.'.pdf')}}, true); 
+                                    request.responseType = "blob";
+                                    request.onload = function (e) {
+                                        if (this.status === 200) {
+                                            // `blob` response
+                                            console.log(this.response);
+                                            // create `objectURL` of `this.response` : `.pdf` as `Blob`
+                                            var file = window.URL.createObjectURL(this.response);
+                                            var a = document.createElement("a");
+                                            a.href = file;
+                                            a.download = this.response.name || "detailPDF";
+                                            document.body.appendChild(a);
+                                            a.click();
+                                            // remove `a` following `Save As` dialog, 
+                                            // `window` regains `focus`
+                                            window.onfocus = function () {                     
+                                            document.body.removeChild(a)
+                                            }
+                                        };
+                                    };
+                                    request.send();
+                                </script>
                             @endif
                             <br><br>
                                 <p style="font:light 14px roboto">Written By: <a href="{{asset('/profile/'.$articleArray['writer'])}}">{{ ucwords($articleArray['writer'])}}</a>  </p>

@@ -23,19 +23,55 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>   
   
   <style>
-    .input-group {
-        position: relative;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-box;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        -webkit-box-align: center;
-        -ms-flex-align: stretch;
-        align-items: stretch;
-        width: 100%;
-    }
+        .input-group {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-box;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-align: center;
+            -ms-flex-align: stretch;
+            align-items: stretch;
+            width: 100%;
+        }
+        @media only screen and (max-width: 600px) {   
+            .btn {
+            font-weight: 500;
+            border-width: 2px;
+            font-style: normal;
+            letter-spacing: 1px;
+            margin: 4.4rem -2.2rem;
+            white-space: normal;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            padding: 1.19rem 1rem;
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            word-break: break-word;
+        }
+        .form-control {
+            display: block;
+            margin-left: -30px;
+            margin-right: 47px;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+      
+      }
   </style>
+
 </head>
 <body>
     @include('mainPages.mainPagesNav')

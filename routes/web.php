@@ -58,6 +58,7 @@ Route::post('/comment/{pageLink}',['as'=>'info','uses'=>'commentController@store
 Route::post('/comment/delete/{commentId}',['as'=>'info','uses'=>'commentController@destroy']);
 
 Route::get('/search','searchController@search');
+Route::get('/search/{subs}',['as'=>'type','uses'=>'searchController@subtype']);
 
 Route::resource('/teacherForm','dataEntries\teacherDataController');
 Route::resource('/studentForm','dataEntries\studentDataController');

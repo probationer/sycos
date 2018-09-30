@@ -43,7 +43,9 @@ class articleController extends Controller
         ]);
         
         $title = trim($request->input('title'),"?");
-        
+        $title = str_replace(" ","-",$title);
+        $title = str_replace("_","-",$title);
+
         if(Auth::user()){
 
             //create article
@@ -52,7 +54,7 @@ class articleController extends Controller
             $article->writer_id = Auth::user()->id;
             $article->body = $request->input('body');
             $article->tags = ucwords($request->input('tags')).',';
-            $article->link = $title.'_'.mt_rand(Auth::user()->id,1000);
+            $article->link = $title.'-'.mt_rand(Auth::user()->id,1000);
             $article->views ='0';
             $article->save();
 
@@ -158,8 +160,10 @@ class articleController extends Controller
         ]);
 
         $title = trim($request->input('title'),"?");
-       
-        $pdfName = $title.'_'.mt_rand(Auth::user()->id,1000);
+        $title = str_replace(" ","-",$title);
+        $title = str_replace("_","-",$title);
+
+        $pdfName = $title.'-'.mt_rand(Auth::user()->id,1000);
             $fileNameWithExt = $request->file('pdfFile')->getClientOriginalName();
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('pdfFile')->getClientOriginalExtension();
