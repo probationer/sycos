@@ -26,8 +26,76 @@
 <body>
     @include('mainPages.mainPagesNav')
 
+<section class="timeline2 cid-r5qevDT5gB" id="timeline2-1n">
 
 
+
+
+
+    <div class="container align-center">
+        <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2"><br>Our Mission</h2>
+        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style display-5">Provide a platfrom for every interllectual to spread knowledge easily.</h3>
+
+        <div class="container timelines-container" mbri-timelines="">
+            <div class="row timeline-element reverse separline">      
+                <span class="iconsBackground">
+                    <span class="mbr-iconfont mbri-smile-face"></span>
+                </span>          
+                <div class="col-xs-12 col-md-6 align-left">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                            1-on-1 Guidance</h4>
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">
+                            We trust each understudy ought to have the capacity to have 1-on-1 scholarly help the minute it's required.
+                        </p>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row timeline-element  separline">
+                <span class="iconsBackground">
+                    <span class="mbr-iconfont mbri-clock"></span>
+                </span>
+                <div class="col-xs-12 col-md-6 align-left ">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                            Easy Access</h4>
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">With sycos you can get on-request help at whatever point you need, or set up repeating exercises when its most advantageous for your life. You don't need to stress for seaching part of website pages for your questions about vocation and any scholastic help.we are here for you 24*7.<br></p>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="row timeline-element reverse separline">
+                <span class="iconsBackground">
+                    <span class="mbr-iconfont mbri-setting"></span>
+                </span>
+                <div class="col-xs-12 col-md-6 align-left">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">Learning and Coodinating</h4>      
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">Coordinated learning works. We've trusted that from the very first moment. However, we additionally knew it would work better on the off chance that it were available, reasonable, and more advantageous for everybody. So's what we've assembled—a less demanding approach to interface individuals who need to know with the specialists that can instruct them. Also, we've changed the manner in which individuals consider instruction all the while.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row timeline-element ">
+                <span class="iconsBackground">
+                    <span class="mbr-iconfont mbri-users"></span>
+                </span>
+                <div class="col-xs-12 col-md-6 align-left ">
+                    <div class="timeline-text-content">
+                        <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5">
+                            Free Materials And Study Guides</h4>
+                        <p class="mbr-timeline-text mbr-fonts-style display-7">
+                            Our all around devoted group made a computerized commercial center to interface understudies to free mentors and furthermore to experienced fruitful individuals for their profession related issues and inquiries. It was the first of its kind, our commitment to propelling individualized learning has enabled Sycos to build up a ton of best-in-class items that unite understudies and teachers, on the web and face to face. Furthermore, we don't anticipate ceasing at any point in the near future.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!----
 <section class="features18 popup-btn-cards cid-qWEFd5MhRE" id="features18-x">
 
     <div class="container">
@@ -96,9 +164,7 @@
         </div>
     </div>
 </section>
-
-
-
+--->
 <section class="features15 cid-qWEFfuqBkb" id="features15-y">
 
     

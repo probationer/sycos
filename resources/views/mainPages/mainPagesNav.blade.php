@@ -11,8 +11,8 @@
             <div class="menu-logo">
                 <div class="navbar-brand">
                     <span class="navbar-logo">
-                        <a href="">
-                            <img src="{{asset('assetsHome/images/logono-background-364x126.png')}}" alt="Mobirise" title="" style="height: 4.1rem;">
+                        <a href="{{asset('/')}}">
+                            <img src="{{asset('assetsHome/images/logo(with_background)-388x130.png')}}" alt="Mobirise" title="" style="height: 4.1rem;">
                         </a>
                     </span>
                     

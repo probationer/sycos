@@ -114,16 +114,7 @@
         <div class="full-screen">
             <div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000">
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url({{asset('assetsHome/images/mbr-1624x1080.jpg')}});">
-                        <div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.7;"></div>
-                        <img src="{{asset('assets/images/1.jpg')}}"><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">Coaching Near You</h2><p class="lead mbr-text mbr-fonts-style display-5">Search According to your location</p></div></div></div></div>
-                    </div>
-                    <div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url({{asset('assetsHome/images/mbr-1620x1080.jpg')}});">
-                        <div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div>
-                        <img src="{{asset('assetsHome/images/2.jpg')}}"><div class="carousel-caption justify-content-center"><div class="col-10 align-left">
-                            <h2 class="mbr-fonts-style display-1"><a href="{{asset('article/create')}}" style="color:white;">Write Article And Gain Popularity</a></h2>
-                                <p class="lead mbr-text mbr-fonts-style display-5">You can write your unique article, notes for your students, or for other companions,</p></div></div></div></div>
-                    </div>
+                    
                     <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url({{asset('assetsHome/images/mbr-1-1620x1080.jpg')}});"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(91, 104, 107);"></div>
                                     <img src="{{asset('assetsHome/images/mbr-1-1620x1080.jpg')}}">
                                     <div class="carousel-caption justify-content-center">
