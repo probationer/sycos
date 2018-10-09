@@ -2,8 +2,8 @@
     
 @section('content')
     <script src="{{asset('js/editor.js')}}"></script>   
-    <link rel="stylesheet" type="text/css" href="{{asset('css/tag.css')}}">
-    <script src="{{asset('js/tag.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrapTag/bootstrap-tagsinput.css')}}">
+    <script src="{{asset('js/bootstrapTag/bootstrap-tagsinput.js')}}"></script>   
     
     <div class='container' style="margin-top:50px;">
         <h1 style=" marign-top:50px;"> Write Article </h1>
@@ -29,6 +29,7 @@
         
             <div class='form-group'>
                 {{Form::label('tags','Tags( Add relevant tags, it will help to find your article )')}}
+                <br>
                 <input id="tags" type="tags" data-role="tagsinput" name="tags" class="form-control" placeholder='Use comma to separate'>
             </div>
             <div class='form-group'>
@@ -38,7 +39,8 @@
     </div>
 
     <script>
-        $('input[name="tags"]').amsifySuggestags();
+       
+       // $('input[name="tags"]').amsifySuggestags();
         $('#fileUploader').click(function(){
             $('#textBody').fadeOut();
             $('#refreshNotify').fadeIn("slow");

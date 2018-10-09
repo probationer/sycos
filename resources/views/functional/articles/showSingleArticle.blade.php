@@ -1,24 +1,5 @@
 @extends('components.functionalPages.articles.layout')
-<!--
-har baat likhi nhi jati,
 
-jaise ki tumhare mere karib aana,
-likha thodi ja skta h,
-
-
-chlte chlte hatho ka takra jana,
-fursat ke lamho m bs hum dono ke hone ki aas,
-ye likha nhi jata,
-
-colg m aate hi tumhse milne ki chah,
-ye likha thodi jata h,
-
-tumhari khushboo ka ahsaas,
-tumhari sasso ka mujhko chuna,
-ye likha thodi jata h,
-
-ye bs mehsus ki jati h, likha thodi jata h ;*
--->
 @section('content')
 
 <style>

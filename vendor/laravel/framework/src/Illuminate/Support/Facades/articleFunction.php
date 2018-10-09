@@ -124,10 +124,10 @@ class articleFunction extends Facade{
         $class = array("label-default","label-primary","label-success","label-info","label-warning","label-danger");
         $list = explode(',',$list);
         $result ="";
-        $max = sizeof($list)<8?sizeof($list):8;
-        
+        $max = sizeof($list);//<8?sizeof($list):8;
+        //echo $max;
         for($i=0;$i<$max;$i++){
-            $result .= ' <span class="label '.$class[$i].'">'.$list[$i].'</span>';
+            $result .= ' <span class="label '.$class[$i%6].'">'.$list[$i].'</span>';
         }
 
         return $result;

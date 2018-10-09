@@ -1,8 +1,8 @@
 @extends('components.site_forms.form_layout')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{asset('css/tag.css')}}">
-<script src="{{asset('js/tag.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrapTag/bootstrap-tagsinput.css')}}">
+<script src="{{asset('js/bootstrapTag/bootstrap-tagsinput.js')}}"></script>
 <?php
 
 
@@ -307,14 +307,14 @@
                       <div class="form-group">
                           <label class="col-sm-12" for="TextArea">Locations you can give classes ? (Can write more than one separate by comma) </label>
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" name="locations" id="TextArea"  value="{{$locations}}" placeholder="Eg: Laxmi nagar,C.p.,Okhla etc">
+                              <input type="text" class="form-control"  data-role="tagsinput" name="locations" id="TextArea"  value="{{$locations}}" placeholder="Eg: Laxmi nagar,C.p.,Okhla etc">
                                 @if ($errors->has('locations'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('locations') }}</strong>
                                     </span>
                                 @endif
                             </div>
-                            <script>$('input[name="locations"]').amsifySuggestags();</script>
+                            
                       </div>
                       
                       <div class="form-group">
@@ -330,7 +330,7 @@
                       </div>
                       
                       <div class="text-center">
-                          <button type="submit" class="btn btn-info" id="submit" name="SubmitForm">Submit</button>
+                          <button type="submit" class="btn btn-info" id="submit" name="SubmitForm">Update</button>
                       </div>
           
       

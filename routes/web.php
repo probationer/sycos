@@ -17,6 +17,14 @@ Route::get('/', 'pageController@index');
 Route::get('/googlef9fe7aff060ba801.html',function(){
     return view('googlef9fe7aff060ba801');
 });
+Route::get('/google5003294494e75b52.html',function(){
+    return view('google5003294494e75b52');
+});
+
+//bing master
+Route::get('/BingSiteAuth.xml',function(){
+    return response()->view('BingSiteAuth')->header('Content-Type', 'text/xml');
+});
 
 Route::get('/about', 'pageController@about');
 Route::get('/feeds', 'pageController@feeds');

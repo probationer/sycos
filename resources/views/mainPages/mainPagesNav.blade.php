@@ -24,10 +24,11 @@
                             <a class="nav-link link text-white display-4" href="{{asset('/')}}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link link text-white dropdown-toggle display-4" href="javascript:void(0)" data-toggle="dropdown-submenu" aria-expanded="false">Find A Tutor</a>
+                            <a class="nav-link link text-white dropdown-toggle display-4" href="javascript:void(0)" aria-expanded="true" data-toggle="dropdown-submenu">Explore</a>
                             <div class="dropdown-menu">
-                                <a class="text-white dropdown-item display-4" href="{{asset('/search')}}">Search A Tutor<br></a>
-                                <a class="text-white dropdown-item display-4" href="{{asset('/get_recommendation')}}">Get Recommendation</a>
+                                <a class="text-white dropdown-item display-4" href="{{asset('/article')}}" aria-expanded="true">Read Articles</a>
+                                <a class="text-white dropdown-item display-4" href="{{asset('/video')}}" aria-expanded="true">Watch Videos</a>
+                                <a class="text-white dropdown-item display-4" href="http://counselling.sycos.in" aria-expanded="true">Career Counselling</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -39,20 +40,19 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link link text-white dropdown-toggle display-4" href="javascript:void(0)" aria-expanded="true" data-toggle="dropdown-submenu">Explore</a>
-                            <div class="dropdown-menu">
-                                <a class="text-white dropdown-item display-4" href="{{asset('/article')}}" aria-expanded="true">Read Articles</a>
-                                <a class="text-white dropdown-item display-4" href="{{asset('/video')}}" aria-expanded="true">Watch Videos</a>
-                                <a class="text-white dropdown-item display-4" href="http://counselling.sycos.in" aria-expanded="true">Career Counselling</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
                             <a class="nav-link link text-white dropdown-toggle display-4" href="javascript:void(0)" data-toggle="dropdown-submenu" aria-expanded="false">About Us</a>
                             <div class="dropdown-menu">
                                 <a class="text-white dropdown-item display-4" href="{{asset('/about')}}">About Sycos<br></a>
                                 <a class="text-white dropdown-item display-4" href="{{asset('/signup')}}">Join Us<br></a>
                                 <a class="text-white dropdown-item display-4" href="{{asset('/suggestions')}}">Contact Us<br></a>
                                 <a class="text-white dropdown-item display-4" href="{{asset('/sycos_team')}}">Our Team<br></a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link link text-white dropdown-toggle display-4" href="javascript:void(0)" data-toggle="dropdown-submenu" aria-expanded="false">Find A Tutor</a>
+                            <div class="dropdown-menu">
+                                <a class="text-white dropdown-item display-4" href="{{asset('/search')}}">Search A Tutor<br></a>
+                                <a class="text-white dropdown-item display-4" href="{{asset('/get_recommendation')}}">Get Recommendation</a>
                             </div>
                         </li>
                         @if(!Auth::user())

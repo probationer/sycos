@@ -236,7 +236,7 @@ class commentFunction extends Facade{
                         
                         <div style="font:600 14px oxygen; margin-bottom:10px;">
                                 <img src="'.asset('/storage/profileImage/'.$detail->imageLink).'" class="img-circle" width="40px" height="40px">
-                                '.$detail->student_name.'
+                                '.$detail->studentName.'
                         </div>
                         <p>'.$comment.'</p>'.$star.' '.$deletButton.'
                     </div>';

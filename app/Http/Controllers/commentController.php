@@ -39,7 +39,7 @@ class commentController extends Controller
     public function store(Request $request,$link)
     {
         $this->validate($request ,[
-            'comment'=>'required|min:4|max:255',
+            'comment'=>'required|regex:/^[a-zA-Z0-9]/|min:4|max:255',
         ]);
 
         if(DB::table('signup')->where('name',$link)->exists()){

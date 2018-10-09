@@ -1,9 +1,10 @@
 @extends('components.site_forms.form_layout')
 
-
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{asset('css/tag.css')}}">
-<script src="{{asset('js/tag.js')}}"></script>
+
+<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrapTag/bootstrap-tagsinput.css')}}">
+<script src="{{asset('js/bootstrapTag/bootstrap-tagsinput.js')}}"></script>
+
 <div>
     <div class="container" id="form-holder">
         <div class="text-center">

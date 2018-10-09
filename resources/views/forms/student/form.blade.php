@@ -88,10 +88,10 @@
                     </select>
 
                     @if ($errors->has('class'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('class') }}</strong>
-                                    </span>
-                                @endif
+                        <span class="help-block">
+                            <strong>{{ $errors->first('class') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             

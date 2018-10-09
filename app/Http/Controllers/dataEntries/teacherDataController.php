@@ -66,27 +66,33 @@ class teacherDataController extends Controller
             }
 
             $profilePage =  Auth::user()->name;
-            teacherData::create([
-                'user_id' => $userId,
-                'first_name' => $data['fname'],
-                'last_name' => $data['lname'],
-                'qualifications' => $data['qualifications'],
-                'sex' => $data['sex'],
-                'age' => $data['age'],
-                'subjects' => $subjectString,
-                'classes' =>$classString,
-                'experience' => $data['exp'],
-                'contact' => $data['contactNo'],
-                'locations' => $data['locations'].',',
-                'pincode' => $data['pincode'],
-                'status' => $status,
-                'pursuing' => $data['Pursuing'],
-                'state' => $data['state'],
-                'description' => $data['description'],
-                'imageLink' => $NameToStore,
-                'profilePage' =>$profilePage,
+            
+            if(!DB::table('teachertable')->where('user_id',$userId)->exists()){
+                return redirect('/login')->with('you have to sign up first to fill this form');
+            }
+
+            $teacherId = DB::table('teachertable')->where('user_id',$userId)->first();
+            $dataInTable = teacherData::find($teacherId->id);
+               
+                $dataInTable->first_name = $data['fname'];
+                $dataInTable->last_name = $data['lname'];
+                $dataInTable->qualifications = $data['qualifications'];
+                $dataInTable->sex = $data['sex'];
+                $dataInTable->age = $data['age'];
+                $dataInTable->subjects = $subjectString;
+                $dataInTable->classes =$classString;
+                $dataInTable->experience = $data['exp'];
+                $dataInTable->contact = $data['contactNo'];
+                $dataInTable->locations = $data['locations'].',';
+                $dataInTable->pincode = $data['pincode'];
+                $dataInTable->status = $status;
+                $dataInTable->pursuing = $data['Pursuing'];
+                $dataInTable->state = $data['state'];
+                $dataInTable->description = $data['description'];
+                $dataInTable->imageLink = $NameToStore;
+                $dataInTable->profilePage =$profilePage;
                 
-            ]);
+                $dataInTable->save();
             return redirect('/profile/'.$profilePage);//->with('Your Account is created');
         }else{
             return redirect('/login')->with('please login');

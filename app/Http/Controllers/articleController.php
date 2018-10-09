@@ -126,12 +126,17 @@ class articleController extends Controller
         if(Auth::user()->id!= $articledetail->writer_id){
             return redirect('/login')->with('error','Invalid user');
         }
+        
+        $newlink = $articledetail->link;
+
         $article = article::find($id);
         $article->title = $request->input('title');
         $article->body = $request->input('body');
-            $article->save();
+        $article->tags = ucwords($request->input('tags')).',';
 
-            return redirect('article/'.$link)->with('success','Your article has been updated');
+        $article->save();
+
+        return redirect('article/'.$newlink)->with('success','Your article has been updated');
     }
 
     /**

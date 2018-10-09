@@ -242,9 +242,7 @@
             
             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                 <div class="col-sm-12"><label>Something About you </label>
-                <textarea type='text' class="form-control" rows="5" name="description" placeholder="Why you need teacher ? about your weak subjects or anything else...">
-                        {{$description}}
-                </textarea>
+                <textarea type='text' class="form-control" rows="5" name="description" placeholder="Why you need teacher ? about your weak subjects or anything else...">{{$description}}</textarea>
                     @if ($errors->has('description'))
                         <span class="help-block">
                             <strong>{{ $errors->first('description') }}</strong>
@@ -255,7 +253,7 @@
             
             
             <div class="text-center">
-                <button type="submit" class="btn btn-info btn-danger" id="submit"  name="SubmitForm" >Create</button>
+                <button type="submit" class="btn btn-info btn-danger" id="submit"  name="SubmitForm" >Update</button>
             </div>
 	
 	
